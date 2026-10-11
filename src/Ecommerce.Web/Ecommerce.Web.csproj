@@ -129,11 +129,15 @@
     <Content Include="Content/landing-floating.css" />
     <Content Include="Content/floating-app-theme.css" />
     <Content Include="Scripts/floating-app-theme.js" />
+    <Content Include="Content/product-photo-unique.css" />
+    <Content Include="Scripts/product-photo-unique.js" />
     <Content Include="Content/site.css" />
     <Content Include="Content/stage4b.css" />
     <Content Include="Content/stage4c.css" />
     <Content Include="packages.config" />
-  </ItemGroup>
+      <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\AdminRegister.cshtml" />
+</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../Ecommerce.Core/Ecommerce.Core.csproj">
@@ -150,7 +154,9 @@
       <Project>{33333333-3333-3333-3333-333333333333}</Project>
       <Name>Ecommerce.Services</Name>
     </ProjectReference>
-  </ItemGroup>
+      <Content Include="Content\product-3d-visuals.css" />
+    <Content Include="Scripts\product-3d-visuals.js" />
+</ItemGroup>
 
   <Import Project="$(MSBuildBinPath)/Microsoft.CSharp.targets" />
 </Project>

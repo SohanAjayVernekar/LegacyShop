@@ -1,0 +1,236 @@
+/* LegacyShop Semantic 3D Models V2 */
+
+.product-art.ls3d-ready,
+.detail-art.ls3d-ready,
+.cart-thumb.ls3d-ready,
+.ls3d-mini-host{
+    position:relative;overflow:hidden;isolation:isolate;
+    background:
+        radial-gradient(circle at 24% 18%,rgba(255,255,255,.92),transparent 23%),
+        linear-gradient(145deg,var(--ls3d-bg1,#efe2d4),var(--ls3d-bg2,#caa98d)) !important;
+}
+
+.product-art.ls3d-ready .ls-product-photo,
+.detail-art.ls3d-ready .ls-product-photo,
+.product-art.ls3d-ready .product-object,
+.detail-art.ls3d-ready .product-object,
+.product-art.ls3d-ready .ls-photo-loader,
+.detail-art.ls3d-ready .ls-photo-loader{display:none!important}
+
+.ls3d-scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;perspective:900px;z-index:1;pointer-events:none}
+.ls3d-scene:before{
+    content:"";position:absolute;width:72%;height:28%;left:14%;bottom:10%;
+    border-radius:50%;background:rgba(47,34,24,.16);filter:blur(18px);transform:rotate(-8deg)
+}
+.ls3d-scene:after{
+    content:"";position:absolute;width:55%;height:55%;right:-14%;top:-16%;
+    border-radius:50%;border:1px solid rgba(255,255,255,.4)
+}
+.ls3d-model{
+    --c1:hsl(var(--h,28) 36% 52%);
+    --c2:hsl(calc(var(--h,28) + 20) 30% 34%);
+    --c3:hsl(calc(var(--h,28) + 45) 45% 75%);
+    position:relative;width:58%;height:66%;transform-style:preserve-3d;
+    transform:rotateX(var(--rx,-7deg)) rotateY(var(--ry,-15deg)) rotateZ(var(--rz,-2deg));
+    animation:ls3dFloat 5.4s ease-in-out infinite;
+    filter:drop-shadow(0 26px 19px rgba(45,31,22,.22))
+}
+.product-card:hover .ls3d-model{
+    animation-play-state:paused;
+    transform:rotateX(-5deg) rotateY(calc(var(--ry,-15deg) + 10deg)) rotateZ(0deg) translateY(-7px) scale(1.035);
+    transition:transform .45s cubic-bezier(.2,.8,.2,1)
+}
+.ls3d-brand{
+    position:absolute;left:50%;bottom:8%;transform:translateX(-50%);padding:6px 10px;max-width:78%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-radius:999px;
+    background:rgba(255,253,249,.78);color:#59483c;font-size:7px;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(8px);z-index:3
+}
+.ls3d-spark{position:absolute;z-index:4;color:rgba(255,249,229,.95);text-shadow:0 0 14px rgba(255,255,255,.8)}
+.ls3d-spark.s1{left:17%;top:19%;font-size:18px}.ls3d-spark.s2{right:15%;bottom:20%;font-size:24px}
+
+/* Existing strong models */
+.ls3d-serum .cap{position:absolute;width:34%;height:20%;left:33%;top:5%;border-radius:8px 8px 5px 5px;background:linear-gradient(90deg,#c9b6a4,#f5eee7,#a8927d)}
+.ls3d-serum .pump{position:absolute;width:8%;height:14%;left:46%;top:-2%;background:#37312d;border-radius:3px}
+.ls3d-serum .pump:after{content:"";position:absolute;width:28px;height:6px;left:0;top:-2px;border-radius:4px;background:#37312d}
+.ls3d-serum .bottle{position:absolute;width:56%;height:62%;left:22%;bottom:9%;border-radius:16px 16px 28px 28px;background:linear-gradient(90deg,rgba(255,255,255,.32),transparent 22%),linear-gradient(145deg,var(--c1),var(--c2));border:1px solid rgba(255,255,255,.4)}
+.ls3d-serum .label{position:absolute;left:29%;right:29%;top:46%;height:24%;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#f9f3ea;color:#6a5342;font-size:8px;font-weight:800}
+
+.ls3d-cream .tube{position:absolute;width:54%;height:72%;left:23%;top:7%;border-radius:26px 26px 14px 14px;background:linear-gradient(145deg,#fbf8f2,var(--c3));clip-path:polygon(15% 0,85% 0,100% 88%,87% 100%,13% 100%,0 88%)}
+.ls3d-cream .tube:after{content:"SKIN";position:absolute;left:22%;right:22%;top:38%;padding:8px 2px;border-radius:7px;text-align:center;background:var(--c1);color:#fff;font-size:8px;font-weight:800}
+.ls3d-cream .cap{position:absolute;width:48%;height:13%;left:26%;bottom:5%;border-radius:7px 7px 13px 13px;background:linear-gradient(90deg,#c8b8aa,#f7f1e9,#ae9c8d)}
+
+.ls3d-phone .device{position:absolute;inset:6% 22% 2%;border:7px solid #26221f;border-radius:26px;background:radial-gradient(circle at 72% 22%,rgba(255,255,255,.33),transparent 20%),linear-gradient(145deg,var(--c1),var(--c2));box-shadow:inset 0 0 0 2px rgba(255,255,255,.12),18px 16px 0 -8px rgba(43,35,31,.55)}
+.ls3d-phone .device:before{content:"";position:absolute;width:34%;height:10px;left:33%;top:7px;border-radius:0 0 9px 9px;background:#171412}
+
+.ls3d-laptop .screen{position:absolute;left:10%;right:10%;top:3%;height:57%;border:8px solid #2d2926;border-radius:15px 15px 8px 8px;background:linear-gradient(145deg,var(--c1),var(--c2));transform:translateZ(25px)}
+.ls3d-laptop .base{position:absolute;left:3%;right:3%;bottom:17%;height:22%;background:linear-gradient(#d8d0c7,#a89f96);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);transform:rotateX(60deg);transform-origin:top}
+
+.ls3d-earbuds .case{position:absolute;left:20%;right:20%;bottom:14%;height:40%;border-radius:34px 34px 42px 42px;background:linear-gradient(145deg,#fff,var(--c3))}
+.ls3d-earbuds .bud{position:absolute;width:26%;height:42%;top:13%;border-radius:35px 35px 18px 18px;background:linear-gradient(145deg,#fff,var(--c3))}
+.ls3d-earbuds .bud:after{content:"";position:absolute;width:34%;height:38%;left:33%;bottom:-26%;border-radius:0 0 14px 14px;background:inherit}
+.ls3d-earbuds .b1{left:18%;transform:rotate(-11deg)}.ls3d-earbuds .b2{right:18%;transform:rotate(11deg)}
+
+.ls3d-audio .band{position:absolute;width:64%;height:65%;left:18%;top:2%;border:14px solid var(--c2);border-bottom:0;border-radius:50% 50% 0 0}
+.ls3d-audio .cup{position:absolute;width:30%;height:42%;top:38%;border-radius:26px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-audio .c1{left:10%}.ls3d-audio .c2{right:10%}
+
+.ls3d-camera .cam-body{position:absolute;width:72%;height:52%;left:14%;top:25%;border-radius:18px;background:linear-gradient(145deg,#37322e,#171513)}
+.ls3d-camera .lens{position:absolute;width:48%;aspect-ratio:1;left:26%;top:28%;border-radius:50%;border:10px solid #6f6258;background:radial-gradient(circle,#151310 0 28%,#2e3c42 29% 38%,#111 39% 100%)}
+
+.ls3d-speaker .speaker-box{position:absolute;width:54%;height:76%;left:23%;top:7%;border-radius:18px;background:linear-gradient(145deg,#3b3531,#171513)}
+.ls3d-speaker .woofer{position:absolute;width:40%;aspect-ratio:1;left:30%;bottom:19%;border-radius:50%;border:8px solid #5c514a;background:radial-gradient(circle,var(--c1) 0 17%,#1a1816 18% 48%,#302a27 49% 100%)}
+.ls3d-speaker .tweeter{position:absolute;width:18%;aspect-ratio:1;left:41%;top:20%;border-radius:50%;background:#bfa78e}
+
+.ls3d-shoe .sole{position:absolute;width:78%;height:18%;left:8%;bottom:17%;border-radius:60% 25% 35% 50%;background:#e8dfd6;transform:skewX(-13deg)}
+.ls3d-shoe .upper{position:absolute;width:73%;height:44%;left:10%;bottom:28%;border-radius:62% 20% 28% 36%;background:linear-gradient(145deg,var(--c1),var(--c2));clip-path:polygon(0 58%,18% 30%,43% 15%,58% 0,76% 25%,100% 56%,94% 100%,8% 100%)}
+
+.ls3d-bag .bag-body{position:absolute;width:64%;height:56%;left:18%;bottom:14%;border-radius:18px 18px 30px 30px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-bag .bag-strap{position:absolute;width:47%;height:43%;left:26.5%;top:13%;border:8px solid var(--c2);border-bottom:0;border-radius:50% 50% 0 0}
+
+.ls3d-watch .strap,.ls3d-smartwatch .strap{position:absolute;width:26%;height:94%;left:37%;top:3%;border-radius:23px;background:linear-gradient(90deg,var(--c2),var(--c1),var(--c2))}
+.ls3d-watch .face{position:absolute;width:58%;aspect-ratio:1;left:21%;top:23%;border-radius:50%;background:#2a2623;border:7px solid #c9b39e}
+.ls3d-smartwatch .smart-face{position:absolute;width:58%;aspect-ratio:.88;left:21%;top:27%;border-radius:22%;background:linear-gradient(145deg,#1c2025,#35516d);border:7px solid #b7aaa0}
+
+.ls3d-chair .back{position:absolute;width:54%;height:54%;left:23%;top:4%;border-radius:30px 30px 16px 16px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-chair .seat{position:absolute;width:64%;height:22%;left:18%;top:48%;border-radius:12px 12px 24px 24px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-chair .leg{position:absolute;width:7%;height:35%;bottom:2%;border-radius:7px;background:#4c3b31}.ls3d-chair .l1{left:27%}.ls3d-chair .l2{right:27%}
+
+.ls3d-lamp .shade{position:absolute;width:68%;height:44%;left:16%;top:5%;background:linear-gradient(145deg,#f7e9d4,var(--c1));clip-path:polygon(24% 0,76% 0,100% 100%,0 100%)}
+.ls3d-lamp .stem{position:absolute;width:8%;height:37%;left:46%;top:47%;border-radius:8px;background:#4c4037}
+.ls3d-lamp .lamp-base{position:absolute;width:48%;height:12%;left:26%;bottom:5%;border-radius:50%;background:#6b5a4d}
+
+/* New semantic models */
+.ls3d-keyboard .kb-board{position:absolute;width:86%;height:47%;left:7%;top:30%;border-radius:14px;background:linear-gradient(145deg,#373431,#171615);transform:perspective(320px) rotateX(55deg);box-shadow:0 18px 0 -10px rgba(0,0,0,.32)}
+.ls3d-keyboard .kb-keys{position:absolute;width:70%;height:26%;left:15%;top:39%;background:repeating-linear-gradient(90deg,#d8d1ca 0 7%,transparent 7% 9%),repeating-linear-gradient(0deg,#d8d1ca 0 18%,transparent 18% 24%);transform:perspective(320px) rotateX(55deg);opacity:.9}
+
+.ls3d-mouse .mouse-shell{position:absolute;width:50%;height:72%;left:25%;top:9%;border-radius:50% 50% 38% 38%;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-mouse .mouse-shell:after{content:"";position:absolute;left:50%;top:0;width:2px;height:38%;background:rgba(255,255,255,.35)}
+.ls3d-mouse .mouse-wheel{position:absolute;width:8%;height:18%;left:46%;top:22%;border-radius:999px;background:#27221f}
+
+.ls3d-monitor .monitor-screen{position:absolute;width:80%;height:52%;left:10%;top:7%;border:8px solid #292623;border-radius:12px;background:linear-gradient(145deg,#4b86a8,#193448)}
+.ls3d-monitor .monitor-neck{position:absolute;width:9%;height:22%;left:45.5%;top:59%;background:#7b736d}
+.ls3d-monitor .monitor-base{position:absolute;width:52%;height:9%;left:24%;bottom:10%;border-radius:50%;background:#7b736d}
+
+.ls3d-wallart .art-frame{position:absolute;width:72%;height:72%;left:14%;top:8%;border:10px solid #765a42;border-radius:8px;background:#f3e7d5}
+.ls3d-wallart .art-shape{position:absolute;border-radius:50%}
+.ls3d-wallart .art-shape.a{width:34%;height:34%;left:15%;top:18%;background:var(--c1)}
+.ls3d-wallart .art-shape.b{width:28%;height:28%;right:15%;bottom:18%;background:var(--c3)}
+.ls3d-wallart .art-line{position:absolute;width:56%;height:4px;left:22%;top:54%;background:#6f655b;transform:rotate(-19deg)}
+
+.ls3d-frame .photo-frame{position:absolute;width:66%;height:72%;left:17%;top:7%;border:12px solid #8e6f54;background:#efe5da}
+.ls3d-frame .photo-inner{position:absolute;inset:10%;background:linear-gradient(145deg,#8fb0bd,#d8b79e)}
+
+.ls3d-blocks .block{position:absolute;width:31%;height:31%;border-radius:8px;box-shadow:inset -7px -7px 12px rgba(0,0,0,.12)}
+.ls3d-blocks .block:before{content:"";position:absolute;width:22%;height:12%;left:16%;top:-8%;border-radius:4px;background:inherit;box-shadow:24px 0 0 currentColor}
+.ls3d-blocks .b1{left:17%;bottom:18%;background:#d6655c;color:#d6655c}
+.ls3d-blocks .b2{left:46%;bottom:18%;background:#e4b84d;color:#e4b84d}
+.ls3d-blocks .b3{left:31%;bottom:43%;background:#5d93b4;color:#5d93b4}
+.ls3d-blocks .b4{left:51%;bottom:47%;width:25%;height:25%;background:#7ca36d;color:#7ca36d}
+
+.ls3d-perfume .perf-bottle{position:absolute;width:58%;height:56%;left:21%;bottom:12%;border-radius:18px 18px 26px 26px;background:linear-gradient(145deg,rgba(255,255,255,.65),var(--c3));border:2px solid rgba(255,255,255,.65)}
+.ls3d-perfume .perf-cap{position:absolute;width:28%;height:24%;left:36%;top:8%;border-radius:5px;background:#c3ab95}
+.ls3d-perfume .perf-label{position:absolute;left:31%;right:31%;top:49%;padding:7px;text-align:center;background:#faf3e9;color:#6e5543;font-size:8px}
+
+.ls3d-lipstick .lip-base{position:absolute;width:30%;height:58%;left:35%;bottom:9%;border-radius:7px;background:linear-gradient(90deg,#333,#777,#242424)}
+.ls3d-lipstick .lip-stick{position:absolute;width:22%;height:34%;left:39%;top:8%;border-radius:12px 12px 4px 4px;background:#b94755;transform:rotate(6deg)}
+
+.ls3d-tablet .tablet-device{position:absolute;width:72%;height:80%;left:14%;top:4%;border:8px solid #2a2724;border-radius:22px;background:linear-gradient(145deg,#4d7f9d,#162e3e)}
+.ls3d-tablet .tablet-device:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#111;left:50%;top:7px}
+
+.ls3d-backpack .pack-body{position:absolute;width:58%;height:64%;left:21%;bottom:10%;border-radius:28px 28px 18px 18px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-backpack .pack-pocket{position:absolute;width:42%;height:25%;left:29%;bottom:19%;border-radius:12px;background:rgba(255,255,255,.17)}
+
+.ls3d-mug .mug-body{position:absolute;width:55%;height:56%;left:19%;bottom:15%;border-radius:10px 10px 26px 26px;background:linear-gradient(145deg,#fbf4e9,var(--c1))}
+.ls3d-mug .mug-handle{position:absolute;width:30%;height:36%;right:11%;top:37%;border:10px solid var(--c1);border-left:0;border-radius:0 50% 50% 0}
+
+.ls3d-book .cover{position:absolute;width:58%;height:76%;left:21%;top:6%;border-radius:5px 14px 14px 5px;background:linear-gradient(145deg,var(--c1),var(--c2));box-shadow:13px 9px 0 -4px #efe8df}
+.ls3d-notebook .notebook-body{position:absolute;width:62%;height:76%;left:23%;top:6%;border-radius:5px 12px 12px 5px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-notebook .notebook-ring{position:absolute;width:10%;height:68%;left:17%;top:10%;background:repeating-linear-gradient(0deg,#ddd 0 6%,transparent 6% 13%)}
+
+.ls3d-dumbbell .db-bar{position:absolute;width:64%;height:10%;left:18%;top:45%;border-radius:10px;background:#38322e}
+.ls3d-dumbbell .db-weight{position:absolute;width:25%;height:42%;top:29%;border-radius:10px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-dumbbell .left{left:7%}.ls3d-dumbbell .right{right:7%}
+
+.ls3d-football .ball,.ls3d-basketball .ball{position:absolute;width:58%;aspect-ratio:1;left:21%;top:18%;border-radius:50%}
+.ls3d-football .football-ball{background:radial-gradient(circle at 50% 45%,#333 0 10%,#f3f1e9 11% 23%,#222 24% 31%,#eee 32%)}
+.ls3d-basketball .basket-ball{background:radial-gradient(circle at 30% 30%,#ef8a2e,#b95818);border:3px solid #56311f}
+
+.ls3d-toycar .toycar-body{position:absolute;width:72%;height:30%;left:14%;top:39%;border-radius:18px 28px 10px 10px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-toycar .wheel{position:absolute;width:18%;aspect-ratio:1;bottom:18%;border-radius:50%;background:#282522}
+.ls3d-toycar .w1{left:20%}.ls3d-toycar .w2{right:20%}
+
+.ls3d-gift .gift-box{position:absolute;width:66%;height:54%;left:17%;bottom:13%;border-radius:12px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-gift .gift-ribbon{position:absolute;width:12%;height:54%;left:44%;bottom:13%;background:#f2ddc7}
+.ls3d-gift .gift-bow{position:absolute;width:38%;height:26%;left:31%;top:13%;border:9px solid #f2ddc7;border-radius:50%}
+
+.ls3d-guitar .g-neck{position:absolute;width:10%;height:70%;left:47%;top:-2%;border-radius:8px;background:#5a3d2b;transform:rotate(7deg)}
+.ls3d-guitar .g-body1,.ls3d-guitar .g-body2{position:absolute;border-radius:50%;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-guitar .g-body1{width:54%;aspect-ratio:1;left:23%;bottom:7%}.ls3d-guitar .g-body2{width:40%;aspect-ratio:1;left:30%;bottom:31%}.ls3d-guitar .g-hole{position:absolute;width:18%;aspect-ratio:1;left:41%;bottom:33%;border-radius:50%;background:#2a201a}
+
+.ls3d-piano .piano-body{position:absolute;width:80%;height:52%;left:10%;top:24%;border-radius:12px;background:#252220}
+.ls3d-piano .piano-keys{position:absolute;width:68%;height:22%;left:16%;top:49%;background:repeating-linear-gradient(90deg,#faf8f3 0 9%,#171717 9% 12%)}
+
+.ls3d-vase .vase-body{position:absolute;width:48%;height:68%;left:26%;bottom:8%;border-radius:20% 20% 44% 44%/18% 18% 28% 28%;background:linear-gradient(145deg,var(--c1),var(--c2));clip-path:polygon(35% 0,65% 0,72% 18%,92% 100%,8% 100%,28% 18%)}
+
+.ls3d-mirror .mirror-body{position:absolute;width:58%;height:76%;left:21%;top:5%;border:10px solid #8b7058;border-radius:50%;background:linear-gradient(145deg,#e9f2f4,#b5c8cf)}
+
+.ls3d-clock .clock-body{position:absolute;width:62%;aspect-ratio:1;left:19%;top:17%;border-radius:50%;background:#f5eee6;border:9px solid #7d6653}
+.ls3d-clock .clock-hand{position:absolute;left:50%;top:48%;width:3px;background:#4a4038;transform-origin:50% 0}.ls3d-clock .h1{height:23%;transform:rotate(35deg)}.ls3d-clock .h2{height:17%;transform:rotate(128deg)}
+
+.ls3d-candle .candle-body{position:absolute;width:42%;height:58%;left:29%;bottom:10%;border-radius:12px 12px 20px 20px;background:linear-gradient(145deg,#f6eee2,var(--c3))}
+.ls3d-candle .flame{position:absolute;width:14%;height:20%;left:43%;top:8%;border-radius:50% 50% 50% 0;background:#ffd66b;transform:rotate(-45deg)}
+
+.ls3d-travel .travel-case{position:absolute;width:60%;height:70%;left:20%;top:11%;border-radius:22px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-travel .travel-case:before{content:"";position:absolute;width:34%;height:13%;left:33%;top:-14%;border:6px solid #4a4039;border-bottom:0;border-radius:12px 12px 0 0}
+
+.ls3d-garden .pot{position:absolute;width:54%;height:40%;left:23%;bottom:10%;background:linear-gradient(145deg,#b67956,#7f5238);clip-path:polygon(5% 0,95% 0,82% 100%,18% 100%)}
+.ls3d-garden .leaf{position:absolute;width:26%;height:50%;top:7%;border-radius:80% 10% 80% 10%;background:linear-gradient(145deg,#8ba778,#4f7350);transform-origin:bottom}
+.ls3d-garden .g1{left:27%;transform:rotate(-26deg)}.ls3d-garden .g2{left:42%;height:55%;transform:rotate(-4deg)}.ls3d-garden .g3{right:24%;transform:rotate(28deg)}
+
+.ls3d-hammer .handle{position:absolute;width:18%;height:64%;left:42%;bottom:7%;border-radius:10px;background:linear-gradient(90deg,#7b5538,#b98158,#6b472f);transform:rotate(14deg)}
+.ls3d-hammer .head{position:absolute;width:66%;height:24%;left:17%;top:17%;border-radius:12px;background:linear-gradient(145deg,#b8b1aa,#605b57);transform:rotate(14deg)}
+
+.ls3d-pet .bowl{position:absolute;width:72%;height:38%;left:14%;bottom:19%;background:linear-gradient(145deg,var(--c1),var(--c2));clip-path:polygon(0 0,100% 0,85% 100%,15% 100%)}
+.ls3d-pet .bowl:after{content:"PET";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900}
+
+.ls3d-babybottle .baby-bottle{position:absolute;width:42%;height:62%;left:29%;bottom:10%;border-radius:16px 16px 30px 30px;background:linear-gradient(145deg,#f7fbfb,#b8dce0)}
+.ls3d-babybottle .baby-nipple{position:absolute;width:22%;height:18%;left:39%;top:9%;border-radius:50% 50% 20% 20%;background:#f2c9a3}
+
+.ls3d-office .holder{position:absolute;width:52%;height:58%;left:24%;bottom:12%;border-radius:10px 10px 24px 24px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-office .pen{position:absolute;width:8%;height:62%;bottom:35%;border-radius:7px;transform-origin:bottom;background:#55483f}
+.ls3d-office .p1{left:34%;transform:rotate(-11deg)}.ls3d-office .p2{left:48%;height:67%;background:#b56f54}.ls3d-office .p3{right:32%;transform:rotate(13deg);background:#d4b487}
+
+.ls3d-snack .snack-pack,.ls3d-box .pack{position:absolute;width:58%;height:72%;left:21%;top:7%;border-radius:12px;background:linear-gradient(145deg,var(--c1),var(--c2));box-shadow:16px 15px 0 -7px rgba(70,50,36,.35)}
+.ls3d-snack .snack-pack:after{content:"SNACK";position:absolute;left:15%;right:15%;top:38%;padding:10px 2px;border-radius:8px;text-align:center;background:#f5eadf;color:#604a3b;font-size:8px;font-weight:900}
+.ls3d-box .pack:before{content:"LEGACY";position:absolute;left:15%;right:15%;top:30%;padding:11px 3px;border-radius:8px;background:#f5eadf;color:#604a3b;text-align:center;font-size:8px;font-weight:900}
+
+.ls3d-bottle .generic-bottle{position:absolute;width:48%;height:66%;left:26%;bottom:8%;border-radius:18px 18px 30px 30px;background:linear-gradient(145deg,var(--c1),var(--c2))}
+.ls3d-bottle .generic-bottle:before{content:"";position:absolute;width:42%;height:16%;left:29%;top:-12%;border-radius:9px 9px 4px 4px;background:#403932}
+
+/* Generic fallbacks for unstyled but detected types */
+.ls3d-model:not(.ls3d-keyboard):not(.ls3d-mouse):not(.ls3d-monitor):not(.ls3d-wallart):not(.ls3d-frame):not(.ls3d-blocks):not(.ls3d-serum):not(.ls3d-perfume):not(.ls3d-lipstick):not(.ls3d-cream):not(.ls3d-phone):not(.ls3d-tablet):not(.ls3d-laptop):not(.ls3d-earbuds):not(.ls3d-audio):not(.ls3d-camera):not(.ls3d-speaker):not(.ls3d-shoe):not(.ls3d-bag):not(.ls3d-backpack):not(.ls3d-watch):not(.ls3d-smartwatch):not(.ls3d-chair):not(.ls3d-lamp):not(.ls3d-mug):not(.ls3d-book):not(.ls3d-notebook):not(.ls3d-dumbbell):not(.ls3d-football):not(.ls3d-basketball):not(.ls3d-toycar):not(.ls3d-gift):not(.ls3d-guitar):not(.ls3d-piano):not(.ls3d-vase):not(.ls3d-mirror):not(.ls3d-clock):not(.ls3d-candle):not(.ls3d-travel):not(.ls3d-garden):not(.ls3d-hammer):not(.ls3d-pet):not(.ls3d-babybottle):not(.ls3d-office):not(.ls3d-snack):not(.ls3d-box):not(.ls3d-bottle):after{
+    content:"";position:absolute;width:58%;height:68%;left:21%;top:8%;border-radius:20px;background:linear-gradient(145deg,var(--c1),var(--c2))
+}
+
+/* Mini contexts */
+.cart-thumb .ls3d-model,.ls3d-mini-host .ls3d-model{width:72%;height:76%;animation:none;filter:drop-shadow(0 12px 10px rgba(43,31,24,.18))}
+.cart-thumb .ls3d-brand,.ls3d-mini-host .ls3d-brand,.cart-thumb .ls3d-spark,.ls3d-mini-host .ls3d-spark{display:none}
+
+.ls3d-detail-views{display:flex;gap:9px;margin-top:12px}
+.ls3d-view-btn{width:70px;height:70px;border:1px solid #dfd2c5;border-radius:15px;background:#f4ebe1;overflow:hidden;position:relative;cursor:pointer;padding:0;transition:.2s}
+.ls3d-view-btn:hover{transform:translateY(-3px)}
+.ls3d-view-btn.active{border-color:#6a5040;box-shadow:0 8px 18px rgba(64,45,33,.12)}
+.ls3d-view-btn .ls3d-scene{transform:scale(.78)}.ls3d-view-btn .ls3d-brand,.ls3d-view-btn .ls3d-spark{display:none}
+.detail-thumbs.ls3d-hide-old,.ls-detail-thumbs.ls3d-hide-old{display:none!important}
+
+.detail-art.ls3d-ready[data-ls3d-view="1"] .ls3d-model{--ry:16deg;--rx:-4deg;--rz:3deg}
+.detail-art.ls3d-ready[data-ls3d-view="2"] .ls3d-model{--ry:-34deg;--rx:-9deg;--rz:-4deg}
+.detail-art.ls3d-ready[data-ls3d-view="3"] .ls3d-model{--ry:5deg;--rx:12deg;--rz:0deg}
+
+@keyframes ls3dFloat{
+    0%,100%{transform:rotateX(var(--rx,-7deg)) rotateY(var(--ry,-15deg)) rotateZ(var(--rz,-2deg)) translateY(2px)}
+    50%{transform:rotateX(calc(var(--rx,-7deg) + 2deg)) rotateY(calc(var(--ry,-15deg) + 5deg)) rotateZ(calc(var(--rz,-2deg) + 1deg)) translateY(-8px)}
+}
+@media(max-width:640px){.product-art .ls3d-model{width:64%;height:72%}.detail-art .ls3d-model{width:62%;height:70%}}
+@media(prefers-reduced-motion:reduce){.ls3d-model{animation:none!important}}

@@ -4,6 +4,9 @@
     ViewBag.Title = "Shop";
 }
 <link rel="stylesheet" href="/Content/floating-app-theme.css" />
+<link rel="stylesheet" href="/Content/product-3d-visuals.css" />
+
+
 <div class="shop-page animated-site">
     <div class="ambient-orb orb-shop-a"></div>
     <div class="ambient-orb orb-shop-b"></div>
@@ -25,7 +28,18 @@
         </form>
 
         <nav class="main-nav compact-nav">
-            <a href="/Account/CustomerLogin">Account</a>
+            @if (Session["CustomerId"] != null && Convert.ToString(Session["Role"]) == "Customer")
+            {
+                <a href="/Customer/Dashboard">Account</a>
+            }
+            else if (Session["UserId"] != null && Convert.ToString(Session["Role"]) == "Admin")
+            {
+                <a href="/Admin/Dashboard">Admin</a>
+            }
+            else
+            {
+                <a href="/Account/CustomerLogin">Account</a>
+            }
             <a class="nav-pill burst-trigger" href="/Cart">Cart</a>
         </nav>
     </header>
@@ -187,3 +201,6 @@
 </div>
 
 <script src="/Scripts/floating-app-theme.js"></script>
+
+
+<script src="/Scripts/product-3d-visuals.js"></script>

@@ -1,0 +1,281 @@
+@model Ecommerce.Core.ViewModels.RegisterViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Create Account";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Account · LegacyShop</title>
+
+    <style>
+        *{box-sizing:border-box}
+        html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:#2f2924}
+        body{
+            min-height:100vh;overflow-x:hidden;
+            background:
+                radial-gradient(circle at 14% 16%,rgba(231,205,181,.68),transparent 28%),
+                radial-gradient(circle at 88% 76%,rgba(203,218,199,.55),transparent 26%),
+                linear-gradient(135deg,#f8f1e9,#f1e4d6 52%,#f8f2eb)
+        }
+        .rg-page{min-height:100vh;padding-bottom:48px;position:relative;overflow:hidden}
+        .rg-orb{position:fixed;border-radius:50%;pointer-events:none;opacity:.55}
+        .rg-orb.a{width:190px;height:190px;background:#e6cdb5;left:-70px;top:16%}
+        .rg-orb.b{width:240px;height:240px;background:#dce6d8;right:-100px;bottom:8%}
+        .rg-orb.c{width:90px;height:90px;background:#edd5be;right:18%;top:8%}
+
+        .rg-header{
+            width:calc(100% - 36px);height:70px;margin:18px auto 0;padding:0 20px;
+            display:flex;align-items:center;justify-content:space-between;gap:20px;
+            border-radius:22px;border:1px solid rgba(222,207,193,.9);
+            background:rgba(255,253,249,.80);backdrop-filter:blur(15px);
+            box-shadow:0 15px 42px rgba(64,44,29,.08);position:relative;z-index:20
+        }
+        .rg-brand{display:flex;align-items:center;gap:9px;color:#2c2722;text-decoration:none;font-family:Georgia,serif;font-size:22px}
+        .rg-brand-mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#2d2824;color:#fff;font-size:18px}
+        .rg-brand-accent{color:#a46845}
+        .rg-back{
+            display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;
+            border:1px solid #ded0c3;background:#fff;color:#665b52;text-decoration:none;
+            font-size:9px;font-weight:800;transition:.2s
+        }
+        .rg-back:hover{transform:translateY(-2px);box-shadow:0 9px 20px rgba(59,42,30,.08)}
+
+        .rg-main{
+            width:min(1160px,90vw);margin:0 auto;padding:46px 0;
+            display:grid;grid-template-columns:1fr .88fr;gap:56px;align-items:center;
+            position:relative;z-index:3
+        }
+        .rg-showcase{min-height:610px;position:relative;padding:45px 0}
+        .rg-kicker{display:block;color:#a56d4b;font-size:8px;letter-spacing:1.8px;font-weight:900}
+        .rg-showcase h1{
+            max-width:620px;margin:11px 0 17px;font-family:Georgia,"Times New Roman",serif;
+            font-size:58px;line-height:.98;font-weight:400;letter-spacing:-2px
+        }
+        .rg-showcase h1 em{display:block;color:#a06644;font-style:italic}
+        .rg-showcase>p{max-width:500px;color:#74695f;font-size:12px;line-height:1.8}
+        .rg-benefits{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+        .rg-benefit{
+            padding:9px 11px;border-radius:999px;border:1px solid #dfd2c5;
+            background:rgba(255,253,249,.72);color:#675b51;font-size:8px;font-weight:800
+        }
+        .rg-float{
+            position:absolute;border:1px solid rgba(224,210,196,.95);
+            background:rgba(255,253,249,.88);backdrop-filter:blur(12px);
+            box-shadow:0 18px 46px rgba(62,43,30,.10)
+        }
+        .rg-card-main{width:280px;height:250px;left:12%;bottom:0;border-radius:30px;padding:18px;animation:rgFloatA 5.8s ease-in-out infinite}
+        .rg-card-small{width:175px;right:7%;bottom:70px;border-radius:20px;padding:13px;animation:rgFloatB 5s ease-in-out infinite}
+        .rg-card-top{width:185px;right:4%;top:155px;border-radius:20px;padding:13px;animation:rgFloatB 6.2s ease-in-out infinite reverse}
+        .rg-mini-art{
+            height:150px;border-radius:22px;position:relative;overflow:hidden;
+            background:radial-gradient(circle at 70% 18%,rgba(255,255,255,.8),transparent 24%),linear-gradient(145deg,#d9bea8,#a87352)
+        }
+        .rg-mini-art:before{
+            content:"";position:absolute;width:76px;height:135px;left:50%;top:50%;
+            transform:translate(-50%,-50%) rotate(-8deg);border-radius:18px;
+            border:6px solid #302923;background:linear-gradient(145deg,#473d36,#9b7056);
+            box-shadow:0 18px 26px rgba(43,31,23,.20)
+        }
+        .rg-mini-art:after{content:"✦";position:absolute;right:21px;top:15px;color:#fff4dc;font-size:24px}
+        .rg-mini-foot{display:flex;align-items:center;justify-content:space-between;padding-top:12px}
+        .rg-mini-foot small,.rg-float small{display:block;color:#998b80;font-size:7px;text-transform:uppercase;letter-spacing:1px}
+        .rg-mini-foot strong,.rg-float strong{display:block;margin-top:3px;font-size:10px}
+        .rg-float-icon{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;margin-bottom:8px;background:#eee1d5;color:#7d563f;font-size:16px}
+
+        .rg-form-wrap{display:flex;align-items:center;justify-content:center}
+        .rg-card{
+            width:100%;max-width:500px;padding:34px;border-radius:32px;position:relative;overflow:hidden;
+            background:rgba(255,253,249,.92);border:1px solid rgba(224,210,196,.98);
+            box-shadow:0 26px 66px rgba(62,42,29,.12);backdrop-filter:blur(16px)
+        }
+        .rg-card:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-70px;top:-70px;background:#ead8c7;opacity:.62}
+        .rg-card>*{position:relative;z-index:2}
+        .rg-card-kicker{display:block;color:#a56845;font-size:8px;letter-spacing:1.8px;font-weight:900}
+        .rg-card h2{font-family:Georgia,serif;font-weight:400;font-size:37px;margin:6px 0 6px;letter-spacing:-.8px}
+        .rg-muted{margin:0 0 20px;color:#7d7268;font-size:10px;line-height:1.6}
+        .rg-validation{margin:0 0 15px;padding:11px 12px;border-radius:13px;border:1px solid #e6b9b0;background:#fff0ed;color:#994b40;font-size:9px}
+        .rg-validation:empty{display:none}
+
+        .rg-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+        .rg-field{min-width:0}
+        .rg-field.wide{grid-column:1/-1}
+        .rg-field label{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px;color:#504840;font-size:9px;font-weight:800}
+        .rg-field label span{color:#9b9086;font-size:7px;font-weight:500}
+        .rg-input{
+            width:100%;padding:12px 13px;border:1px solid #dcd0c3;border-radius:14px;
+            outline:none;background:#fff;color:#312b26;font-size:11px;transition:.18s
+        }
+        .rg-input:focus{border-color:#a77a5c;box-shadow:0 0 0 4px rgba(167,122,92,.08)}
+        .rg-error{display:block;margin-top:4px;color:#a3473b;font-size:8px}
+
+        .rg-terms{display:flex;align-items:flex-start;gap:8px;margin:15px 0;color:#7b7066;font-size:8px;line-height:1.5}
+        .rg-terms input{margin-top:1px;accent-color:#29241f}
+        .rg-submit{
+            width:100%;padding:14px 17px;border:0;border-radius:15px;background:#29241f;color:#fff;
+            display:flex;align-items:center;justify-content:space-between;cursor:pointer;
+            font-size:10px;font-weight:900;transition:.18s;box-shadow:0 12px 27px rgba(39,31,25,.16)
+        }
+        .rg-submit:hover{transform:translateY(-2px);box-shadow:0 17px 32px rgba(39,31,25,.20)}
+        .rg-login-switch{
+            margin-top:16px;padding-top:15px;border-top:1px solid #eee3d8;
+            text-align:center;color:#80756b;font-size:9px
+        }
+        .rg-login-switch a{color:#8b593b;font-weight:900;text-decoration:none}
+
+        #rg-burst-layer{position:fixed;inset:0;pointer-events:none;z-index:99999}
+        .rg-burst{position:absolute;width:0;height:0}
+        .rg-burst i{
+            position:absolute;width:6px;height:6px;border-radius:50%;
+            background:linear-gradient(135deg,#fff0c7,#c77f50);
+            box-shadow:0 0 8px rgba(255,224,180,.8);
+            animation:rgBurst .8s ease-out forwards
+        }
+
+        @@keyframes rgFloatA{0%,100%{transform:translateY(3px) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+        @@keyframes rgFloatB{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-9px) rotate(-1deg)}}
+        @@keyframes rgBurst{to{opacity:0;transform:translate(var(--bx),var(--by)) scale(1.25)}}
+
+        @@media(max-width:980px){
+            .rg-main{grid-template-columns:1fr;padding-top:26px}
+            .rg-showcase{min-height:430px}
+        }
+        @@media(max-width:680px){
+            .rg-header{width:calc(100% - 20px);height:62px;margin:10px 10px 0;padding:0 12px}
+            .rg-brand{font-size:18px}.rg-showcase{display:none}
+            .rg-main{width:92vw;padding:25px 0}
+            .rg-card{padding:27px 21px;border-radius:25px}
+            .rg-card h2{font-size:33px}
+            .rg-grid{grid-template-columns:1fr}
+            .rg-field.wide{grid-column:1}
+        }
+        @@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+    </style>
+</head>
+<body>
+<div class="rg-page">
+    <div class="rg-orb a"></div><div class="rg-orb b"></div><div class="rg-orb c"></div>
+
+    <header class="rg-header">
+        <a class="rg-brand" href="/">
+            <span class="rg-brand-mark">L</span>
+            <span>Legacy<span class="rg-brand-accent">Shop</span></span>
+        </a>
+        <a class="rg-back burst-register" href="/Account/CustomerLogin">← Back to Login</a>
+    </header>
+
+    <main class="rg-main">
+        <section class="rg-showcase">
+            <span class="rg-kicker">JOIN THE LEGACYSHOP MARKETPLACE</span>
+            <h1>Create your account.<em>Make shopping yours.</em></h1>
+            <p>Save products, manage orders, keep delivery details together and return to your marketplace from any session.</p>
+
+            <div class="rg-benefits">
+                <span class="rg-benefit">♡ Wishlist</span>
+                <span class="rg-benefit">□ Order history</span>
+                <span class="rg-benefit">◇ Faster checkout</span>
+            </div>
+
+            <div class="rg-float rg-card-main">
+                <div class="rg-mini-art"></div>
+                <div class="rg-mini-foot">
+                    <div><small>Marketplace access</small><strong>Your account, your shopping</strong></div><b>→</b>
+                </div>
+            </div>
+
+            <div class="rg-float rg-card-top">
+                <div class="rg-float-icon">♡</div><small>Wishlist</small><strong>Keep favorites ready</strong>
+            </div>
+
+            <div class="rg-float rg-card-small">
+                <div class="rg-float-icon">□</div><small>Orders</small><strong>Track every purchase</strong>
+            </div>
+        </section>
+
+        <section class="rg-form-wrap">
+            <div class="rg-card">
+                <span class="rg-card-kicker">CUSTOMER REGISTRATION</span>
+                <h2>Create your LegacyShop account</h2>
+                <p class="rg-muted">Fill in your details. You will be signed in automatically after registration.</p>
+
+                @Html.ValidationSummary(true, "", new { @class = "rg-validation" })
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="rg-grid">
+                        <div class="rg-field wide">
+                            <label>Full name <span>Required</span></label>
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "rg-input", placeholder = "Your full name", autocomplete = "name", required = "required" })
+                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "rg-error" })
+                        </div>
+
+                        <div class="rg-field">
+                            <label>Email address <span>Required</span></label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "rg-input", type = "email", placeholder = "you@example.com", autocomplete = "email", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "rg-error" })
+                        </div>
+
+                        <div class="rg-field">
+                            <label>Phone <span>Optional</span></label>
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "rg-input", type = "tel", placeholder = "+91 98765 43210", autocomplete = "tel" })
+                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "rg-error" })
+                        </div>
+
+                        <div class="rg-field">
+                            <label>Password <span>6+ characters</span></label>
+                            @Html.PasswordFor(m => m.Password, new { @class = "rg-input", placeholder = "Create password", autocomplete = "new-password", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "rg-error" })
+                        </div>
+
+                        <div class="rg-field">
+                            <label>Confirm password <span>Required</span></label>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "rg-input", placeholder = "Repeat password", autocomplete = "new-password", required = "required" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "rg-error" })
+                        </div>
+                    </div>
+
+                    <label class="rg-terms">
+                        <input type="checkbox" required="required" />
+                        <span>I agree to create a LegacyShop customer account for this demo marketplace.</span>
+                    </label>
+
+                    <button class="rg-submit burst-register" type="submit">
+                        <span>Create Account</span><b>→</b>
+                    </button>
+                }
+
+                <div class="rg-login-switch">
+                    Already have an account? <a href="/Account/CustomerLogin">Sign in →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="rg-burst-layer"></div>
+</div>
+
+<script>
+(function(){
+    function reduced(){return window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches}
+    function burst(x,y){
+        if(reduced())return;
+        var layer=document.getElementById("rg-burst-layer");if(!layer)return;
+        var node=document.createElement("div");node.className="rg-burst";node.style.left=x+"px";node.style.top=y+"px";
+        for(var i=0;i<14;i++){
+            var dot=document.createElement("i"),a=Math.PI*2*i/14,d=32+Math.random()*42;
+            dot.style.setProperty("--bx",(Math.cos(a)*d)+"px");dot.style.setProperty("--by",(Math.sin(a)*d)+"px");node.appendChild(dot)
+        }
+        layer.appendChild(node);setTimeout(function(){if(node.parentNode)node.parentNode.removeChild(node)},850)
+    }
+    document.addEventListener("DOMContentLoaded",function(){
+        var b=document.querySelectorAll(".burst-register");
+        for(var i=0;i<b.length;i++)b[i].addEventListener("click",function(e){burst(e.clientX,e.clientY)})
+    })
+})();
+</script>
+</body>
+</html>

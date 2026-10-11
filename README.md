@@ -1,38 +1,13 @@
-# LegacyShop — Floating Add Product UI
+# LegacyShop Admin Register Link Fix
 
-This patch redesigns the Admin `Add Product` page and the existing `Edit Product`
-page because both routes use the same `ProductEdit.cshtml` view.
-
-It keeps the existing backend fields and save logic:
-- Name
-- Slug
-- Category
-- Price
-- StockQuantity
-- Description
-- IsFeatured
-- IsActive (edit only)
-- Anti-forgery token
-
-UI additions:
-- same floating/curved LegacyShop admin style
-- admin sidebar + topbar
-- rounded glass form panel
-- live product preview
-- automatic slug helper while typing a new name
-- animated floating preview card
-- click burst on save/back buttons
-- responsive layout
+The previous script successfully added the admin registration backend and view.
+It failed only because `AdminLogin.cshtml` has no `</body>` tag.
 
 Apply:
 
 ```bash
-cd ~/Downloads/LegacyShop_ZeroToMVP
-unzip -o ~/Downloads/LegacyShop_Add_Product_Floating_UI.zip -d .
-chmod +x scripts/apply-add-product-floating-ui.sh
-./scripts/apply-add-product-floating-ui.sh
+cd "$HOME/Documents/Intership Projects/Assignment 3/LegacyShop_ZeroToMVP"
+unzip -o ~/Downloads/LegacyShop_Admin_Register_Link_Fix.zip -d .
+chmod +x scripts/fix-admin-register-link.sh
+./scripts/fix-admin-register-link.sh
 ```
-
-Open:
-
-`http://localhost:8040/Admin/ProductCreate`

@@ -1,0 +1,112 @@
+@model Ecommerce.Core.ViewModels.AdminRegisterViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Admin Registration";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Registration · LegacyShop</title>
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#302923;background:radial-gradient(circle at 15% 15%,#ecd6c3 0,transparent 30%),radial-gradient(circle at 85% 75%,#dce7d8 0,transparent 28%),linear-gradient(135deg,#f8f1ea,#ecddd0)}
+        .page{min-height:100vh;padding:18px 18px 50px}
+        .top{height:70px;border:1px solid #dfd1c4;border-radius:22px;background:rgba(255,253,249,.84);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 20px;box-shadow:0 15px 40px rgba(55,39,27,.08)}
+        .brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:#2d2824;font:22px Georgia,serif}.mark{width:34px;height:34px;border-radius:11px;background:#2b2622;color:#fff;display:grid;place-items:center}.accent{color:#a46b48}
+        .back{padding:9px 12px;border-radius:999px;border:1px solid #ddcfc2;background:#fff;color:#665a50;text-decoration:none;font-size:9px;font-weight:800}
+        .main{width:min(1120px,92vw);margin:0 auto;padding:48px 0;display:grid;grid-template-columns:1fr .9fr;gap:56px;align-items:center}
+        .show{min-height:560px;position:relative;padding:45px 0}
+        .kicker{font-size:8px;letter-spacing:1.8px;font-weight:900;color:#a36c49}
+        h1{font:400 58px/.98 Georgia,serif;letter-spacing:-2px;margin:12px 0 16px}h1 em{display:block;color:#a36a47}
+        .show p{max-width:500px;color:#75695f;font-size:12px;line-height:1.8}
+        .float{position:absolute;border:1px solid #dfd1c4;background:rgba(255,253,249,.9);box-shadow:0 18px 44px rgba(55,39,27,.11);backdrop-filter:blur(12px)}
+        .board{left:8%;bottom:0;width:300px;height:235px;border-radius:30px;padding:18px;animation:floatA 5.6s ease-in-out infinite}
+        .mini1{right:5%;top:165px;width:180px;padding:14px;border-radius:20px;animation:floatB 5s ease-in-out infinite}
+        .mini2{right:8%;bottom:70px;width:175px;padding:14px;border-radius:20px;animation:floatB 6s ease-in-out infinite reverse}
+        .bars{display:grid;grid-template-columns:repeat(6,1fr);align-items:end;gap:8px;height:120px}.bars i{display:block;background:linear-gradient(#b67c58,#7c5138);border-radius:8px 8px 4px 4px}.bars i:nth-child(1){height:35%}.bars i:nth-child(2){height:57%}.bars i:nth-child(3){height:45%}.bars i:nth-child(4){height:72%}.bars i:nth-child(5){height:64%}.bars i:nth-child(6){height:90%}
+        .float small{display:block;color:#97897d;font-size:7px;letter-spacing:1px;text-transform:uppercase}.float strong{display:block;margin-top:5px;font-size:10px}
+        .icon{width:34px;height:34px;border-radius:12px;background:#eee1d5;display:grid;place-items:center;margin-bottom:8px}
+        .card{background:rgba(255,253,249,.93);border:1px solid #dfd1c4;border-radius:32px;padding:34px;box-shadow:0 26px 64px rgba(55,39,27,.13);backdrop-filter:blur(14px)}
+        .card h2{font:400 37px Georgia,serif;margin:6px 0}.muted{font-size:10px;color:#7e7268;line-height:1.6;margin-bottom:18px}
+        .warn{font-size:8px;line-height:1.6;padding:11px 12px;border-radius:14px;background:#f5eadf;border:1px solid #e0cbb7;color:#75533d;margin-bottom:16px}
+        .validation{font-size:9px;color:#9c493e;background:#fff0ed;border:1px solid #e6b9b0;border-radius:12px;padding:10px;margin-bottom:12px}.validation:empty{display:none}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field.wide{grid-column:1/-1}.field label{display:block;font-size:9px;font-weight:800;margin-bottom:6px}
+        .input{width:100%;padding:12px 13px;border:1px solid #dcd0c3;border-radius:14px;background:#fff;outline:none}.input:focus{border-color:#9f7457;box-shadow:0 0 0 4px rgba(159,116,87,.08)}
+        .err{display:block;margin-top:4px;font-size:8px;color:#a3473b}
+        .submit{margin-top:16px;width:100%;padding:14px 16px;border:0;border-radius:15px;background:#29241f;color:#fff;font-weight:900;cursor:pointer;box-shadow:0 12px 26px rgba(39,31,25,.16)}
+        .switch{margin-top:16px;padding-top:15px;border-top:1px solid #eee3d8;text-align:center;font-size:9px;color:#80756b}.switch a{color:#8b593b;font-weight:900;text-decoration:none}
+        @@keyframes floatA{0%,100%{transform:translateY(2px) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+        @@keyframes floatB{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-9px) rotate(-1deg)}}
+        @@media(max-width:900px){.main{grid-template-columns:1fr}.show{display:none}}
+        @@media(max-width:600px){.grid{grid-template-columns:1fr}.field.wide{grid-column:1}.card{padding:26px 20px}}
+    </style>
+</head>
+<body>
+<div class="page">
+    <header class="top">
+        <a class="brand" href="/"><span class="mark">L</span><span>Legacy<span class="accent">Shop</span></span></a>
+        <a class="back" href="/Account/AdminLogin">← Back to Admin Login</a>
+    </header>
+
+    <main class="main">
+        <section class="show">
+            <span class="kicker">LEGACYSHOP ADMINISTRATION</span>
+            <h1>Create an admin.<em>Run the marketplace.</em></h1>
+            <p>Manage catalog, inventory, customers, orders and reporting from one administrator account.</p>
+            <div class="float board">
+                <small>Store activity</small><strong style="font:18px Georgia,serif">Admin overview</strong>
+                <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="float mini1"><div class="icon">◇</div><small>Catalog</small><strong>Manage products</strong></div>
+            <div class="float mini2"><div class="icon">□</div><small>Inventory</small><strong>Control stock</strong></div>
+        </section>
+
+        <section class="card">
+            <span class="kicker">ADMIN REGISTRATION</span>
+            <h2>Create administrator account</h2>
+            <p class="muted">Create a new administrator for the LegacyShop demo.</p>
+            <div class="warn">Demo feature: public admin registration should be disabled or restricted before production use.</div>
+
+            @Html.ValidationSummary(true, "", new { @class = "validation" })
+
+            @using (Html.BeginForm("AdminRegister", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="grid">
+                    <div class="field wide">
+                        <label>Administrator name</label>
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "input", placeholder = "Administrator name", required = "required" })
+                        @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "err" })
+                    </div>
+
+                    <div class="field wide">
+                        <label>Email address</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", placeholder = "admin@example.com", required = "required" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "err" })
+                    </div>
+
+                    <div class="field">
+                        <label>Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "input", placeholder = "6+ characters", required = "required" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "err" })
+                    </div>
+
+                    <div class="field">
+                        <label>Confirm password</label>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input", placeholder = "Repeat password", required = "required" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "err" })
+                    </div>
+                </div>
+
+                <button class="submit" type="submit">Create Admin Account →</button>
+            }
+
+            <div class="switch">Already have an admin account? <a href="/Account/AdminLogin">Admin sign in →</a></div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
