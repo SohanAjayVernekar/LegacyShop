@@ -1,0 +1,870 @@
+@model Ecommerce.Core.ViewModels.AdminProductViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.Id == 0 ? "Add Product" : "Edit Product";
+    ViewData["AdminSection"] = "Products";
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+<style>
+.ap-product-create{
+    position:relative;
+    overflow:hidden;
+}
+.ap-product-create:before,
+.ap-product-create:after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(55px);
+    pointer-events:none;
+    z-index:0;
+}
+.ap-product-create:before{
+    width:220px;height:220px;
+    right:4%;top:4%;
+    background:rgba(213,180,151,.24);
+}
+.ap-product-create:after{
+    width:180px;height:180px;
+    left:3%;bottom:7%;
+    background:rgba(196,212,198,.22);
+}
+.ap-product-create > *{position:relative;z-index:2}
+
+.ap-create-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:24px;
+}
+.ap-create-head h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:44px;
+    line-height:1;
+    font-weight:400;
+    letter-spacing:-1.4px;
+    margin:5px 0 8px;
+}
+.ap-create-head p{
+    margin:0;
+    color:#7d746a;
+    font-size:11px;
+    line-height:1.6;
+}
+.ap-create-back{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 15px;
+    border:1px solid #dfd2c5;
+    border-radius:999px;
+    background:rgba(255,255,255,.74);
+    color:#5e554d;
+    font-size:10px;
+    font-weight:800;
+    box-shadow:0 9px 24px rgba(60,42,29,.06);
+}
+.ap-create-back:hover{transform:translateY(-2px);background:#fff}
+
+.ap-create-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);
+    gap:16px;
+    align-items:start;
+}
+.ap-create-card,
+.ap-preview-card,
+.ap-create-tip{
+    border:1px solid #e3d6c9;
+    background:rgba(255,253,249,.91);
+    box-shadow:0 18px 45px rgba(65,44,29,.08);
+    backdrop-filter:blur(13px);
+}
+.ap-create-card{
+    border-radius:30px;
+    padding:25px;
+}
+.ap-create-card-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:22px;
+}
+.ap-create-card-head span{
+    display:block;
+    color:#a96843;
+    font-size:8px;
+    letter-spacing:1.6px;
+    font-weight:800;
+}
+.ap-create-card-head h2{
+    font-family:Georgia,serif;
+    font-size:25px;
+    font-weight:400;
+    margin:3px 0 0;
+}
+.ap-create-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 10px;
+    border-radius:999px;
+    background:#eee4da;
+    color:#735440;
+    font-size:8px;
+    font-weight:800;
+    white-space:nowrap;
+}
+.ap-create-badge i{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:#9c7053;
+    box-shadow:0 0 0 4px rgba(156,112,83,.10);
+}
+
+.ap-product-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+.ap-product-field{min-width:0}
+.ap-product-field.wide{grid-column:1/-1}
+.ap-product-field label{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:7px;
+    color:#514941;
+    font-size:10px;
+    font-weight:800;
+}
+.ap-product-field label small{
+    color:#a0978e;
+    font-size:8px;
+    font-weight:500;
+}
+.ap-product-input,
+.ap-product-select,
+.ap-product-textarea{
+    width:100%;
+    border:1px solid #dcd0c3;
+    border-radius:15px;
+    background:#fff;
+    color:#332d28;
+    outline:none;
+    padding:13px 14px;
+    font-size:11px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+.ap-product-textarea{
+    min-height:125px;
+    resize:vertical;
+    line-height:1.6;
+}
+.ap-product-input:focus,
+.ap-product-select:focus,
+.ap-product-textarea:focus{
+    border-color:#a77a5c;
+    box-shadow:0 0 0 4px rgba(167,122,92,.08);
+}
+.ap-field-error{
+    display:block;
+    margin-top:5px;
+    color:#a3473b;
+    font-size:9px;
+}
+.ap-validation{
+    grid-column:1/-1;
+    margin:0 0 3px;
+    padding:11px 12px;
+    border:1px solid #e7bbb2;
+    border-radius:14px;
+    background:#fff0ed;
+    color:#984b40;
+    font-size:10px;
+}
+.ap-validation:empty{display:none}
+
+.ap-switch-row{
+    grid-column:1/-1;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+.ap-switch-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    padding:14px;
+    border-radius:18px;
+    background:#f7f1e9;
+    border:1px solid #eadfd3;
+}
+.ap-switch-card strong,
+.ap-switch-card span{display:block}
+.ap-switch-card strong{
+    font-size:10px;
+    color:#453e38;
+}
+.ap-switch-card span{
+    margin-top:3px;
+    color:#8a8076;
+    font-size:8px;
+}
+.ap-switch-card input{
+    width:18px;height:18px;
+    accent-color:#29241f;
+}
+
+.ap-form-actions{
+    grid-column:1/-1;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:5px;
+    padding-top:18px;
+    border-top:1px solid #ece3da;
+}
+.ap-form-note{
+    max-width:380px;
+    color:#91867c;
+    font-size:8px;
+    line-height:1.6;
+}
+.ap-save-product{
+    min-width:150px;
+    border:0;
+    border-radius:16px;
+    padding:14px 18px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    background:#29241f;
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 13px 28px rgba(43,35,29,.16);
+}
+.ap-save-product:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 34px rgba(43,35,29,.20);
+}
+
+.ap-create-aside{
+    position:sticky;
+    top:100px;
+    display:grid;
+    gap:14px;
+}
+.ap-preview-card{
+    border-radius:30px;
+    padding:16px;
+    animation:apProductFloat 5.5s ease-in-out infinite;
+}
+.ap-preview-label{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:2px 3px 12px;
+}
+.ap-preview-label span{
+    color:#a96843;
+    font-size:8px;
+    letter-spacing:1.5px;
+    font-weight:800;
+}
+.ap-preview-label b{
+    padding:6px 8px;
+    border-radius:999px;
+    background:#e3ece1;
+    color:#547059;
+    font-size:7px;
+}
+.ap-preview-art{
+    height:275px;
+    border-radius:23px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at 70% 24%,rgba(255,255,255,.82),transparent 22%),
+      linear-gradient(145deg,#e6d2bf,#b98966);
+}
+.ap-preview-art:before,
+.ap-preview-art:after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.34);
+}
+.ap-preview-art:before{width:220px;height:100px;transform:rotate(-16deg)}
+.ap-preview-art:after{width:150px;height:150px}
+.ap-preview-device{
+    width:105px;height:205px;
+    position:relative;
+    z-index:2;
+    border:7px solid #29241f;
+    border-radius:24px;
+    background:linear-gradient(155deg,#3b342f,#85634e);
+    transform:rotate(-7deg);
+    box-shadow:0 22px 34px rgba(45,31,22,.22);
+}
+.ap-preview-device:before{
+    content:"";
+    position:absolute;
+    top:7px;left:50%;
+    width:43px;height:12px;
+    border-radius:0 0 8px 8px;
+    background:#171411;
+    transform:translateX(-50%);
+}
+.ap-preview-device:after{
+    content:"";
+    position:absolute;
+    left:15px;right:15px;bottom:26px;
+    height:30px;
+    border-radius:8px;
+    background:rgba(255,255,255,.12);
+}
+.ap-preview-spark{
+    position:absolute;
+    z-index:3;
+    color:#fff4e4;
+    text-shadow:0 0 14px rgba(255,255,255,.7);
+}
+.ap-preview-spark.s1{left:20%;top:23%;font-size:20px}
+.ap-preview-spark.s2{right:18%;bottom:24%;font-size:25px}
+.ap-preview-info{padding:15px 3px 4px}
+.ap-preview-info small{
+    display:block;
+    color:#968b81;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:1.1px;
+}
+.ap-preview-info h3{
+    font-family:Georgia,serif;
+    font-size:20px;
+    font-weight:400;
+    margin:4px 0 13px;
+}
+.ap-preview-meta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+.ap-preview-price{
+    font-size:12px;
+    font-weight:800;
+}
+.ap-preview-stock{
+    padding:6px 8px;
+    border-radius:999px;
+    background:#f0e6dd;
+    color:#76533d;
+    font-size:8px;
+    font-weight:800;
+}
+
+.ap-create-tip{
+    border-radius:23px;
+    padding:17px;
+}
+.ap-create-tip>span{
+    display:block;
+    color:#a96843;
+    font-size:8px;
+    letter-spacing:1.4px;
+    font-weight:800;
+}
+.ap-create-tip h3{
+    font-family:Georgia,serif;
+    font-size:18px;
+    font-weight:400;
+    margin:4px 0 7px;
+}
+.ap-create-tip p{
+    margin:0;
+    color:#81776e;
+    font-size:9px;
+    line-height:1.65;
+}
+.ap-tip-pills{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-top:12px;
+}
+.ap-tip-pills i{
+    font-style:normal;
+    padding:7px 8px;
+    border-radius:999px;
+    background:#f2e9df;
+    color:#73513d;
+    font-size:7px;
+    font-weight:800;
+}
+
+#ap-product-burst-layer{
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    pointer-events:none;
+}
+.ap-product-burst{
+    position:absolute;
+    width:0;height:0;
+}
+.ap-product-burst i{
+    position:absolute;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#fff0c7,#c77f50);
+    box-shadow:0 0 9px rgba(255,224,180,.85);
+    animation:apProductBurst .8s ease-out forwards;
+}
+
+@@keyframes apProductFloat{
+    0%,100%{transform:translateY(2px) rotate(-.4deg)}
+    50%{transform:translateY(-7px) rotate(.4deg)}
+}
+@@keyframes apProductBurst{
+    to{
+        opacity:0;
+        transform:translate(var(--bx),var(--by)) scale(1.25);
+    }
+}
+
+@@media(max-width:1050px){
+    .ap-create-grid{grid-template-columns:1fr}
+    .ap-create-aside{position:static;grid-template-columns:1fr 1fr}
+}
+@@media(max-width:760px){
+    .ap-create-head{align-items:flex-start;flex-direction:column}
+    .ap-create-head h1{font-size:38px}
+    .ap-product-form{grid-template-columns:1fr}
+    .ap-product-field.wide,
+    .ap-validation,
+    .ap-switch-row,
+    .ap-form-actions{grid-column:1}
+    .ap-switch-row{grid-template-columns:1fr}
+    .ap-form-actions{align-items:flex-start;flex-direction:column}
+    .ap-save-product{width:100%}
+    .ap-create-aside{grid-template-columns:1fr}
+}
+</style>
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content ap-product-create">
+            <div class="ap-create-head">
+                <div>
+                    <span class="ap-kicker">CATALOG MANAGEMENT · PRODUCT</span>
+                    <h1>@(Model.Id == 0 ? "Add new product" : "Edit product")</h1>
+                    <p>@(Model.Id == 0 ? "Create a new item for the LegacyShop marketplace." : "Update this product's marketplace information.")</p>
+                </div>
+
+                <a class="ap-create-back burst-product" href="/Admin/Products">← Back to Products</a>
+            </div>
+
+            <div class="ap-create-grid">
+                <section class="ap-create-card">
+                    <div class="ap-create-card-head">
+                        <div>
+                            <span>PRODUCT INFORMATION</span>
+                            <h2>Marketplace details</h2>
+                        </div>
+
+                        <div class="ap-create-badge">
+                            <i></i>
+                            @(Model.Id == 0 ? "New listing" : "Editing listing")
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Id)
+
+                        <div class="ap-product-form">
+                            @Html.ValidationSummary(true, "", new { @class = "ap-validation" })
+
+                            <div class="ap-product-field wide">
+                                <label>
+                                    Product name
+                                    <small>Required</small>
+                                </label>
+
+                                @Html.TextBoxFor(
+                                    m => m.Name,
+                                    new {
+                                        @class = "ap-product-input",
+                                        placeholder = "e.g. Wireless Noise Cancelling Headphones",
+                                        autocomplete = "off",
+                                        id = "product-name"
+                                    }
+                                )
+
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "ap-field-error" })
+                            </div>
+
+                            <div class="ap-product-field wide">
+                                <label>
+                                    Slug
+                                    <small>URL-friendly name</small>
+                                </label>
+
+                                @Html.TextBoxFor(
+                                    m => m.Slug,
+                                    new {
+                                        @class = "ap-product-input",
+                                        placeholder = "wireless-noise-cancelling-headphones",
+                                        autocomplete = "off",
+                                        id = "product-slug"
+                                    }
+                                )
+
+                                @Html.ValidationMessageFor(m => m.Slug, "", new { @class = "ap-field-error" })
+                            </div>
+
+                            <div class="ap-product-field">
+                                <label>
+                                    Category
+                                    <small>Required</small>
+                                </label>
+
+                                @Html.DropDownListFor(
+                                    m => m.CategoryId,
+                                    (SelectList)ViewBag.Categories,
+                                    "Choose a category",
+                                    new { @class = "ap-product-select", id = "product-category" }
+                                )
+
+                                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "ap-field-error" })
+                            </div>
+
+                            <div class="ap-product-field">
+                                <label>
+                                    Price
+                                    <small>INR</small>
+                                </label>
+
+                                @Html.TextBoxFor(
+                                    m => m.Price,
+                                    new {
+                                        @class = "ap-product-input",
+                                        type = "number",
+                                        min = "0.01",
+                                        step = "0.01",
+                                        placeholder = "0.00",
+                                        id = "product-price"
+                                    }
+                                )
+
+                                @Html.ValidationMessageFor(m => m.Price, "", new { @class = "ap-field-error" })
+                            </div>
+
+                            <div class="ap-product-field">
+                                <label>
+                                    Stock quantity
+                                    <small>Units</small>
+                                </label>
+
+                                @Html.TextBoxFor(
+                                    m => m.StockQuantity,
+                                    new {
+                                        @class = "ap-product-input",
+                                        type = "number",
+                                        min = "0",
+                                        step = "1",
+                                        placeholder = "0",
+                                        id = "product-stock"
+                                    }
+                                )
+
+                                @Html.ValidationMessageFor(m => m.StockQuantity, "", new { @class = "ap-field-error" })
+                            </div>
+
+                            <div class="ap-product-field">
+                                <label>
+                                    Product ID
+                                    <small>@(Model.Id == 0 ? "Created after save" : "Current listing")</small>
+                                </label>
+
+                                <input
+                                    class="ap-product-input"
+                                    value="@(Model.Id == 0 ? "New product" : "#" + Model.Id)"
+                                    disabled="disabled" />
+                            </div>
+
+                            <div class="ap-product-field wide">
+                                <label>
+                                    Description
+                                    <small>Optional details</small>
+                                </label>
+
+                                @Html.TextAreaFor(
+                                    m => m.Description,
+                                    new {
+                                        @class = "ap-product-textarea",
+                                        placeholder = "Describe the product, key features and what makes it useful..."
+                                    }
+                                )
+
+                                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "ap-field-error" })
+                            </div>
+
+                            <div class="ap-switch-row">
+                                <label class="ap-switch-card">
+                                    <div>
+                                        <strong>Featured product</strong>
+                                        <span>Highlight this item across the marketplace.</span>
+                                    </div>
+                                    @Html.CheckBoxFor(m => m.IsFeatured, new { id = "product-featured" })
+                                </label>
+
+                                @if (Model.Id != 0)
+                                {
+                                    <label class="ap-switch-card">
+                                        <div>
+                                            <strong>Active listing</strong>
+                                            <span>Allow customers to see this product.</span>
+                                        </div>
+                                        @Html.CheckBoxFor(m => m.IsActive)
+                                    </label>
+                                }
+                                else
+                                {
+                                    <div class="ap-switch-card">
+                                        <div>
+                                            <strong>Listing status</strong>
+                                            <span>New products are created as active.</span>
+                                        </div>
+                                        <span class="ap-create-badge"><i></i>Active</span>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="ap-form-actions">
+                                <div class="ap-form-note">
+                                    Review the product information before saving. The existing LegacyShop catalog service will handle the listing.
+                                </div>
+
+                                <button class="ap-save-product burst-product" type="submit">
+                                    <span>@(Model.Id == 0 ? "Create Product" : "Save Changes")</span>
+                                    <b>→</b>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </section>
+
+                <aside class="ap-create-aside">
+                    <section class="ap-preview-card">
+                        <div class="ap-preview-label">
+                            <span>LIVE PREVIEW</span>
+                            <b id="preview-featured">MARKETPLACE</b>
+                        </div>
+
+                        <div class="ap-preview-art">
+                            <div class="ap-preview-device"></div>
+                            <span class="ap-preview-spark s1">✦</span>
+                            <span class="ap-preview-spark s2">✧</span>
+                        </div>
+
+                        <div class="ap-preview-info">
+                            <small id="preview-category">PRODUCT CATEGORY</small>
+                            <h3 id="preview-name">@(String.IsNullOrWhiteSpace(Model.Name) ? "Your product name" : Model.Name)</h3>
+
+                            <div class="ap-preview-meta">
+                                <span class="ap-preview-price" id="preview-price">₹@Model.Price.ToString("N0")</span>
+                                <span class="ap-preview-stock" id="preview-stock">@Model.StockQuantity units</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ap-create-tip">
+                        <span>LISTING GUIDE</span>
+                        <h3>Make it easy to discover.</h3>
+                        <p>
+                            Use a clear product name, a simple slug, the closest category,
+                            accurate price and stock, and a concise description.
+                        </p>
+
+                        <div class="ap-tip-pills">
+                            <i>CLEAR NAME</i>
+                            <i>RIGHT CATEGORY</i>
+                            <i>REAL STOCK</i>
+                            <i>GOOD DESCRIPTION</i>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="ap-product-burst-layer"></div>
+
+<script>
+(function () {
+    function text(id) {
+        return document.getElementById(id);
+    }
+
+    function setText(id, value) {
+        var el = text(id);
+        if (el) el.textContent = value;
+    }
+
+    function refreshPreview() {
+        var name = text("product-name");
+        var price = text("product-price");
+        var stock = text("product-stock");
+        var category = text("product-category");
+        var featured = text("product-featured");
+
+        setText(
+            "preview-name",
+            name && name.value.trim() ? name.value.trim() : "Your product name"
+        );
+
+        var number = price ? parseFloat(price.value) : 0;
+        if (isNaN(number)) number = 0;
+
+        setText(
+            "preview-price",
+            "₹" + Math.round(number).toLocaleString("en-IN")
+        );
+
+        setText(
+            "preview-stock",
+            (stock && stock.value ? stock.value : "0") + " units"
+        );
+
+        if (category && category.selectedIndex >= 0) {
+            var option = category.options[category.selectedIndex];
+            var label = option ? option.text : "PRODUCT CATEGORY";
+
+            if (category.value) {
+                setText("preview-category", label.toUpperCase());
+            } else {
+                setText("preview-category", "PRODUCT CATEGORY");
+            }
+        }
+
+        setText(
+            "preview-featured",
+            featured && featured.checked ? "FEATURED" : "MARKETPLACE"
+        );
+    }
+
+    function slugify(value) {
+        return value
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+    }
+
+    function bindSlugHelper() {
+        var name = text("product-name");
+        var slug = text("product-slug");
+
+        if (!name || !slug) return;
+
+        var slugTouched = !!slug.value;
+
+        slug.addEventListener("input", function () {
+            slugTouched = true;
+        });
+
+        name.addEventListener("input", function () {
+            if (!slugTouched || !slug.value) {
+                slug.value = slugify(name.value);
+            }
+            refreshPreview();
+        });
+    }
+
+    function bindPreview() {
+        var ids = [
+            "product-name",
+            "product-price",
+            "product-stock",
+            "product-category",
+            "product-featured"
+        ];
+
+        for (var i = 0; i < ids.length; i++) {
+            var el = text(ids[i]);
+
+            if (!el) continue;
+
+            el.addEventListener("input", refreshPreview);
+            el.addEventListener("change", refreshPreview);
+        }
+
+        refreshPreview();
+    }
+
+    function burst(x, y) {
+        var layer = text("ap-product-burst-layer");
+        if (!layer) return;
+
+        var burst = document.createElement("div");
+        burst.className = "ap-product-burst";
+        burst.style.left = x + "px";
+        burst.style.top = y + "px";
+
+        for (var i = 0; i < 14; i++) {
+            var dot = document.createElement("i");
+            var angle = Math.PI * 2 * i / 14;
+            var distance = 32 + Math.random() * 44;
+
+            dot.style.setProperty("--bx", (Math.cos(angle) * distance) + "px");
+            dot.style.setProperty("--by", (Math.sin(angle) * distance) + "px");
+
+            burst.appendChild(dot);
+        }
+
+        layer.appendChild(burst);
+
+        window.setTimeout(function () {
+            if (burst.parentNode) burst.parentNode.removeChild(burst);
+        }, 850);
+    }
+
+    function bindBurst() {
+        var items = document.querySelectorAll(".burst-product");
+
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener("click", function (e) {
+                burst(e.clientX, e.clientY);
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        bindSlugHelper();
+        bindPreview();
+        bindBurst();
+    });
+})();
+</script>

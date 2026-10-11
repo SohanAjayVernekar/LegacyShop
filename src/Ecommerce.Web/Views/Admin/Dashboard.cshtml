@@ -1,0 +1,377 @@
+@model Ecommerce.Core.ViewModels.AdminDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<style>
+html,body{margin:0;min-height:100%;background:#f5f0e8;color:#29241f;font-family:"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+a{text-decoration:none;color:inherit}
+
+.ls-dash{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:245px minmax(0,1fr);
+    background:#f5f0e8
+}
+.ls-side{
+    position:sticky;top:0;height:100vh;padding:24px 18px;
+    background:#fffdf9;border-right:1px solid #e5dbcf;
+    display:flex;flex-direction:column;z-index:20
+}
+.ls-brand{
+    display:flex;align-items:center;gap:10px;
+    font-size:21px;font-weight:800;letter-spacing:-.5px;
+    margin:0 8px 30px
+}
+.ls-brand-mark{
+    width:34px;height:34px;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:#29241f;color:#fff;font-family:Georgia,serif;font-weight:500
+}
+.ls-brand-accent{color:#a86943}
+.ls-side-label{
+    font-size:9px;letter-spacing:1.7px;color:#a49a90;
+    font-weight:800;margin:0 10px 11px
+}
+.ls-nav{display:grid;gap:5px}
+.ls-nav a{
+    display:flex;align-items:center;gap:11px;
+    padding:10px 11px;border-radius:10px;
+    color:#625a52;font-size:12px;font-weight:700
+}
+.ls-nav a:hover{background:#f5eee6}
+.ls-nav a.active{background:#efe4d9;color:#2d2824}
+.ls-nav-icon{
+    width:21px;text-align:center;color:#8b8178;font-size:13px
+}
+.ls-side-help{
+    margin-top:auto;padding:14px;border-radius:14px;
+    background:#f3ebe2;border:1px solid #e5d8ca
+}
+.ls-side-help span,.ls-side-help strong,.ls-side-help a{display:block}
+.ls-side-help span{font-size:9px;color:#8f8479}
+.ls-side-help strong{font-size:12px;margin:2px 0 7px}
+.ls-side-help a{font-size:10px;color:#8a5739;font-weight:800}
+.ls-logout{
+    margin-top:12px;padding:10px 11px;color:#994e41;
+    font-size:12px;font-weight:800
+}
+
+.ls-main{min-width:0}
+.ls-top{
+    height:72px;padding:0 3vw;
+    display:flex;align-items:center;justify-content:space-between;
+    background:#fffdf9;border-bottom:1px solid #e5dbcf
+}
+.ls-search{
+    width:min(460px,45vw);display:flex;align-items:center;gap:8px;
+    padding:0 12px;border-radius:10px;
+    background:#f8f4ee;border:1px solid #e8ded2;color:#94897e
+}
+.ls-search input{
+    width:100%;border:0;background:transparent;outline:none;padding:10px 0
+}
+.ls-user{display:flex;align-items:center;gap:10px}
+.ls-avatar{
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#dfc8b2;font-family:Georgia,serif;font-size:16px
+}
+.ls-avatar.admin{background:#29241f;color:#fff}
+.ls-user strong,.ls-user span{display:block}
+.ls-user strong{font-size:11px}
+.ls-user span{font-size:9px;color:#7d746a}
+
+.ls-content{padding:36px 3.2vw 54px}
+.ls-heading{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px
+}
+.ls-kicker{
+    display:block;font-size:9px;letter-spacing:1.8px;
+    font-weight:800;color:#a86943
+}
+.ls-heading h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:39px;font-weight:400;margin:4px 0 4px
+}
+.ls-heading p{margin:0;color:#7d746a;font-size:12px}
+.ls-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:12px 17px;border-radius:10px;background:#29241f;
+    color:#fff;font-size:12px;font-weight:800
+}
+
+.ls-metrics{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:14px;margin:26px 0
+}
+.ls-metric{
+    min-height:105px;padding:17px;
+    display:flex;align-items:center;gap:13px;
+    background:#fff;border:1px solid #e5dbcf;border-radius:16px
+}
+.ls-metric-icon{
+    width:43px;height:43px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:#efe4d8;color:#8a583a;font-weight:800
+}
+.ls-metric span,.ls-metric strong,.ls-metric small{display:block}
+.ls-metric span{font-size:10px;color:#7d746a}
+.ls-metric strong{
+    font-family:Georgia,serif;font-size:25px;font-weight:400;line-height:1.15
+}
+.ls-metric small{font-size:9px;color:#aaa096}
+
+.ls-grid{display:grid;grid-template-columns:1.6fr .9fr;gap:14px;margin-bottom:14px}
+.ls-panel{
+    background:#fff;border:1px solid #e5dbcf;
+    border-radius:17px;padding:20px;overflow:hidden
+}
+.ls-panel-head{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:15px;margin-bottom:15px
+}
+.ls-panel-head small{
+    display:block;font-size:8px;letter-spacing:1.4px;color:#a39a91
+}
+.ls-panel-head h3{
+    font-family:Georgia,serif;font-size:20px;font-weight:400;
+    margin:2px 0 0
+}
+.ls-panel-head a{font-size:10px;color:#8a5739;font-weight:800}
+
+.ls-table-wrap{overflow:auto}
+.ls-table{width:100%;border-collapse:collapse;font-size:11px}
+.ls-table th{
+    text-align:left;padding:10px 8px;border-bottom:1px solid #eee6dd;
+    color:#9a9188;font-size:9px;letter-spacing:.6px
+}
+.ls-table td{
+    padding:13px 8px;border-bottom:1px solid #f0e9e1;
+    color:#5e574f;white-space:nowrap
+}
+.ls-table td strong{color:#302b26}
+.ls-status{
+    display:inline-block;padding:5px 8px;border-radius:999px;
+    font-size:9px;font-weight:800
+}
+.ls-status.ok{background:#e3ece2;color:#537057}
+.ls-status.warm{background:#f3e4d3;color:#8b623e}
+.ls-status.neutral{background:#ece7e1;color:#6f675f}
+
+.ls-quick{display:grid}
+.ls-quick a{
+    display:grid;grid-template-columns:38px 1fr 18px;
+    gap:10px;align-items:center;padding:12px 0;
+    border-top:1px solid #eee7de
+}
+.ls-quick a:first-child{border-top:0}
+.ls-qicon{
+    width:36px;height:36px;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    background:#f2e9df
+}
+.ls-quick strong,.ls-quick span{display:block}
+.ls-quick strong{font-size:11px}
+.ls-quick span{font-size:9px;color:#7d746a}
+
+.ls-lower{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+.ls-card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ls-mini-card{
+    border:1px solid #e8ded2;border-radius:13px;padding:12px;background:#fbf8f3
+}
+.ls-mini-art{
+    height:82px;border-radius:10px;margin-bottom:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;font-size:34px;color:#fff
+}
+.ls-mini-art.a{background:#b98967}
+.ls-mini-art.b{background:#d4b892}
+.ls-mini-art.c{background:#9b8b7c}
+.ls-mini-card small{font-size:8px;letter-spacing:1px;color:#7d746a}
+.ls-mini-card strong,.ls-mini-card b{display:block}
+.ls-mini-card strong{font-size:11px;margin:2px 0}
+.ls-mini-card b{font-size:11px}
+
+.ls-bars{
+    height:220px;padding:15px 16px 28px;
+    display:flex;align-items:flex-end;gap:14px;position:relative
+}
+.ls-bars:before,.ls-bars:after{
+    content:"";position:absolute;left:0;right:0;height:1px;background:#eee7de
+}
+.ls-bars:before{top:34%}
+.ls-bars:after{top:66%}
+.ls-bars i{
+    flex:1;position:relative;z-index:2;
+    border-radius:7px 7px 2px 2px;
+    background:linear-gradient(180deg,#a77b5d,#d6b99f)
+}
+.ls-bars i span{
+    position:absolute;left:50%;bottom:-23px;transform:translateX(-50%);
+    font-style:normal;font-size:9px;color:#8d847b
+}
+.ls-stock{display:grid}
+.ls-stock div{
+    display:flex;justify-content:space-between;
+    padding:12px 0;border-top:1px solid #eee7de;font-size:11px
+}
+.ls-stock div:first-child{border-top:0}
+.ls-stock b{color:#994e41}
+
+@@media(max-width:1050px){
+    .ls-metrics{grid-template-columns:repeat(2,1fr)}
+    .ls-grid,.ls-lower{grid-template-columns:1fr}
+}
+@@media(max-width:760px){
+    .ls-dash{grid-template-columns:1fr}
+    .ls-side{display:none}
+    .ls-top{height:64px}
+    .ls-search{width:55vw}
+    .ls-content{padding:28px 5vw}
+    .ls-heading{align-items:flex-start;flex-direction:column}
+}
+@@media(max-width:520px){
+    .ls-metrics{grid-template-columns:1fr}
+    .ls-card-row{grid-template-columns:1fr}
+    .ls-search{display:none}
+}
+</style>
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+
+<div class="ls-dash">
+    <aside class="ls-side">
+        <a class="ls-brand" href="/">
+            <span class="ls-brand-mark">L</span>
+            <span>Legacy<span class="ls-brand-accent">Shop</span></span>
+        </a>
+
+        <div class="ls-side-label">ADMINISTRATION</div>
+
+        <nav class="ls-nav">
+            <a class="active" href="/Admin/Dashboard"><span class="ls-nav-icon">⌂</span>Dashboard</a>
+            <a href="/Admin/Products"><span class="ls-nav-icon">▦</span>Products</a>
+            <a href="/Admin/Categories"><span class="ls-nav-icon">◫</span>Categories</a>
+            <a href="/Admin/Orders"><span class="ls-nav-icon">□</span>Orders</a>
+            <a href="/Admin/Customers"><span class="ls-nav-icon">◎</span>Customers</a>
+            <a href="/Admin/Inventory"><span class="ls-nav-icon">≡</span>Inventory</a>
+            <a href="/Admin/Reports"><span class="ls-nav-icon">↗</span>Reports</a>
+            <a href="/Admin/Settings"><span class="ls-nav-icon">⚙</span>Settings</a>
+        </nav>
+
+        <div class="ls-side-help">
+            <span>STORE STATUS</span>
+            <strong>LegacyShop Admin</strong>
+            <a href="/">Open storefront →</a>
+        </div>
+
+        <a class="ls-logout" href="/Account/Logout">↪ Logout</a>
+    </aside>
+
+    <main class="ls-main">
+        <header class="ls-top">
+            <div class="ls-search"><span>⌕</span><input type="text" placeholder="Search orders, products, customers" /></div>
+
+            <div class="ls-user">
+                <div class="ls-avatar admin">A</div>
+                <div><strong>LegacyShop Admin</strong><span>Administrator</span></div>
+            </div>
+        </header>
+
+        <section class="ls-content">
+            <div class="ls-heading">
+                <div>
+                    <span class="ls-kicker">STORE OVERVIEW</span>
+                    <h1>Admin Dashboard</h1>
+                    <p>Monitor the essentials and move quickly through store operations.</p>
+                </div>
+                <a class="ls-btn" href="/Admin/ProductCreate">+ Add Product</a>
+            </div>
+
+            <div class="ls-metrics">
+                <article class="ls-metric">
+                    <div class="ls-metric-icon">₹</div>
+                    <div><span>Total Revenue</span><strong>₹@Model.TotalSales.ToString("N0")</strong><small>all recorded orders</small></div>
+                </article>
+                <article class="ls-metric">
+                    <div class="ls-metric-icon">□</div>
+                    <div><span>Total Orders</span><strong>@Model.TotalOrders</strong><small>store orders</small></div>
+                </article>
+                <article class="ls-metric">
+                    <div class="ls-metric-icon">◎</div>
+                    <div><span>Customers</span><strong>@Model.TotalCustomers</strong><small>customer accounts</small></div>
+                </article>
+                <article class="ls-metric">
+                    <div class="ls-metric-icon">▦</div>
+                    <div><span>Products</span><strong>@Model.TotalProducts</strong><small>@Model.LowStockProducts low stock</small></div>
+                </article>
+            </div>
+
+            <div class="ls-grid">
+                <section class="ls-panel">
+                    <div class="ls-panel-head">
+                        <div><small>PERFORMANCE</small><h3>Sales Overview</h3></div>
+                        <a href="#">Last 7 days</a>
+                    </div>
+
+                    <div class="ls-bars">
+                        <i style="height:34%"><span>Mon</span></i>
+                        <i style="height:50%"><span>Tue</span></i>
+                        <i style="height:43%"><span>Wed</span></i>
+                        <i style="height:70%"><span>Thu</span></i>
+                        <i style="height:62%"><span>Fri</span></i>
+                        <i style="height:88%"><span>Sat</span></i>
+                        <i style="height:76%"><span>Sun</span></i>
+                    </div>
+                </section>
+
+                <section class="ls-panel">
+                    <div class="ls-panel-head"><div><small>ACTIONS</small><h3>Quick Actions</h3></div></div>
+                    <div class="ls-quick">
+                        <a href="/Admin/ProductCreate"><div class="ls-qicon">＋</div><div><strong>Add product</strong><span>Create a catalog item</span></div><b>→</b></a>
+                        <a href="/Admin/Orders"><div class="ls-qicon">□</div><div><strong>Manage orders</strong><span>Review store activity</span></div><b>→</b></a>
+                        <a href="/Admin/Products"><div class="ls-qicon">≡</div><div><strong>Inventory</strong><span>Check stock levels</span></div><b>→</b></a>
+                    </div>
+                </section>
+            </div>
+
+            <div class="ls-lower">
+                <section class="ls-panel">
+                    <div class="ls-panel-head"><div><small>LATEST ACTIVITY</small><h3>Recent Orders</h3></div><a href="/Admin/Orders">View all →</a></div>
+
+                    <div class="ls-table-wrap">
+                        <table class="ls-table">
+                            <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
+                            <tbody>
+                            @foreach (var order in Model.RecentOrders)
+                            {
+                                <tr>
+                                    <td><strong>@order.OrderNumber</strong></td>
+                                    <td>@order.CustomerName</td>
+                                    <td>₹@order.TotalAmount.ToString("N0")</td>
+                                    <td><span class="ls-status @(order.Status == "Delivered" ? "ok" : "warm")">@order.Status</span></td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="ls-panel">
+                    <div class="ls-panel-head"><div><small>INVENTORY</small><h3>Stock Watch</h3></div><a href="/Admin/Products">Manage →</a></div>
+                    <div class="ls-stock">
+                        <div><span>Low-stock products</span><b>@Model.LowStockProducts</b></div>
+                        <div><span>Total products</span><b>@Model.TotalProducts</b></div>
+                        <div><span>Total customers</span><b>@Model.TotalCustomers</b></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

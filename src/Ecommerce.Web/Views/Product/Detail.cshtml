@@ -1,0 +1,85 @@
+@model Ecommerce.Core.ViewModels.ProductDetailViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.Name;
+    var artClass = Model.Id % 4 == 1
+        ? "product-art-chair"
+        : (Model.Id % 4 == 2
+            ? "product-art-lamp"
+            : (Model.Id % 4 == 3 ? "product-art-vase" : "product-art-textile"));
+}
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+<header class="site-header">
+    <a class="brand burst-trigger" href="/">
+        <span class="brand-mark">L</span>
+        <span>Legacy<span class="brand-accent">Shop</span></span>
+    </a>
+
+    <nav class="main-nav">
+        <a href="/Product">← Back to Shop</a>
+        <a class="nav-pill burst-trigger" href="/Cart">Cart</a>
+    </nav>
+</header>
+
+<main class="product-detail-page animated-detail">
+    <div class="product-detail-visual">
+        <div class="detail-art @artClass tilt-product burst-trigger">
+            <span class="product-tag">@Model.CategoryName</span>
+            <span class="detail-spark ds-one">✦</span>
+            <span class="detail-spark ds-two">✧</span>
+            <span class="detail-spark ds-three">✦</span>
+            <div class="product-object"></div>
+            <div class="detail-ring ring-one"></div>
+            <div class="detail-ring ring-two"></div>
+        </div>
+
+        <div class="detail-thumbs">
+            <i class="active"></i><i></i><i></i>
+        </div>
+    </div>
+
+    <section class="product-detail-copy">
+        <span class="section-kicker">@Model.CategoryName</span>
+        <h1>@Model.Name</h1>
+
+        <div class="detail-rating">★★★★★ <span>4.8 · animated preview</span></div>
+        <div class="detail-price">₹@Model.Price.ToString("N0")</div>
+
+        <p class="detail-description">@Model.Description</p>
+
+        <div class="detail-features">
+            <div><span>✦</span><p><strong>Animated presentation</strong><small>Motion and sparkle without changing your MVC flow.</small></p></div>
+            <div><span>✓</span><p><strong>Easy delivery</strong><small>Checkout in just a few steps.</small></p></div>
+            <div><span>✓</span><p><strong>LegacyShop support</strong><small>Track orders from your account.</small></p></div>
+        </div>
+
+        <div class="stock-line @(Model.StockQuantity > 0 ? "in-stock" : "out-stock")">
+            <i></i>
+            @(Model.StockQuantity > 0 ? Model.StockQuantity + " available" : "Out of stock")
+        </div>
+
+        @if (Model.StockQuantity > 0)
+        {
+            using (Html.BeginForm("Add", "Cart", FormMethod.Post, new { @class = "add-cart-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="productId" value="@Model.Id" />
+
+                <div class="quantity-control">
+                    <label>Quantity</label>
+                    <input type="number" name="quantity" value="1" min="1" max="@Model.StockQuantity" />
+                </div>
+
+                <button type="submit" class="btn btn-dark btn-large burst-trigger">Add to Cart →</button>
+            }
+        }
+
+        <div class="detail-meta">
+            <span>✦ Animated UI</span>
+            <span>Secure checkout</span>
+            <span>Order tracking</span>
+        </div>
+    </section>
+</main>
+
+<script src="/Scripts/floating-app-theme.js"></script>

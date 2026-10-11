@@ -1,0 +1,18 @@
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11111111-1111-1111-1111-111111111111}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Ecommerce.Core</RootNamespace>
+    <AssemblyName>Ecommerce.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' "><OutputPath>bin\Debug\</OutputPath><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType></PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "><OutputPath>bin\Release\</OutputPath><Optimize>true</Optimize></PropertyGroup>
+  <ItemGroup><Reference Include="System" /><Reference Include="System.Core" /><Reference Include="System.ComponentModel.DataAnnotations" /></ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Category.cs" /><Compile Include="Entities\Product.cs" /><Compile Include="Entities\ProductImage.cs" /><Compile Include="Entities\ProductVariant.cs" /><Compile Include="Entities\Customer.cs" /><Compile Include="Entities\Address.cs" /><Compile Include="Entities\Order.cs" /><Compile Include="Entities\OrderLine.cs" /><Compile Include="Entities\AppUser.cs" /><Compile Include="ViewModels\ProductListViewModel.cs" /><Compile Include="ViewModels\ProductDetailViewModel.cs" /><Compile Include="ViewModels\LoginViewModel.cs" /><Compile Include="ViewModels\CartViewModel.cs" /><Compile Include="ViewModels\CheckoutViewModel.cs" /><Compile Include="ViewModels\DashboardViewModels.cs" /><Compile Include="ViewModels\AdminProductViewModel.cs" /><Compile Include="Interfaces\Repositories\IProductRepository.cs" /><Compile Include="Interfaces\Repositories\ICategoryRepository.cs" /><Compile Include="Interfaces\Repositories\IUserRepository.cs" /><Compile Include="Interfaces\Repositories\IOrderRepository.cs" /><Compile Include="Interfaces\Services\ICatalogService.cs" /><Compile Include="Interfaces\Services\IAuthService.cs" /><Compile Include="Interfaces\Services\IOrderService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

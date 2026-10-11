@@ -1,0 +1,465 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "LegacyShop";
+}
+<link rel="stylesheet" href="/Content/landing-floating.css" />
+
+<div class="fl-page">
+    <div class="fl-ambient fl-ambient-a"></div>
+    <div class="fl-ambient fl-ambient-b"></div>
+
+    <header class="fl-header">
+        <a class="fl-brand" href="/">
+            <span class="fl-brand-mark">L</span>
+            <span>Legacy<span>Shop</span></span>
+        </a>
+
+        <nav class="fl-nav">
+            <a href="/Product">Shop</a>
+            <a href="#departments">Categories</a>
+            <a href="#featured">Featured</a>
+            <a href="#how">How it works</a>
+        </nav>
+
+        <div class="fl-header-actions">
+            <a class="fl-icon-btn" href="/Cart" aria-label="Cart">◇</a>
+            <a class="fl-login magnetic burst-trigger" href="/Account/CustomerLogin">Login</a>
+            <a class="fl-admin" href="/Account/AdminLogin">Admin</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="fl-hero">
+            <div class="fl-hero-copy reveal">
+                <span class="fl-pill">2000+ PRODUCTS · 32+ DEPARTMENTS</span>
+
+                <h1>
+                    Discover everything.
+                    <em>Shop beautifully.</em>
+                </h1>
+
+                <p>
+                    From electronics and fashion to home, beauty, books, sports,
+                    grocery and more — LegacyShop brings a complete marketplace
+                    into one calm, modern shopping experience.
+                </p>
+
+                <div class="fl-hero-actions">
+                    <a class="fl-btn fl-btn-dark magnetic burst-trigger" href="/Product">
+                        Shop now <span>→</span>
+                    </a>
+                    <a class="fl-btn fl-btn-soft magnetic burst-trigger" href="#departments">
+                        Explore categories
+                    </a>
+                </div>
+
+                <div class="fl-proof">
+                    <div><strong>2000+</strong><span>Products</span></div>
+                    <div><strong>32+</strong><span>Categories</span></div>
+                    <div><strong>Fast</strong><span>Checkout flow</span></div>
+                </div>
+            </div>
+
+            <div class="fl-hero-stage reveal" id="floating-stage">
+                <div class="fl-stage-glow"></div>
+                <div class="fl-stage-ring ring-a"></div>
+                <div class="fl-stage-ring ring-b"></div>
+
+                <a class="fl-float-card fl-phone-card parallax-card burst-trigger" data-depth="1.2" href="/Product?q=Smartphone">
+                    <span class="fl-mini-label">SMART TECH</span>
+                    <div class="fl-phone-art">
+                        <div class="fl-phone-shell">
+                            <i></i>
+                            <b></b>
+                        </div>
+                    </div>
+                    <div class="fl-card-foot">
+                        <div><small>Mobiles</small><strong>5G Smartphone</strong></div>
+                        <b>₹18,999</b>
+                    </div>
+                </a>
+
+                <a class="fl-float-card fl-audio-card parallax-card burst-trigger" data-depth=".7" href="/Product?q=Earbuds">
+                    <div class="fl-audio-art">
+                        <i class="bud-one"></i>
+                        <i class="bud-two"></i>
+                    </div>
+                    <div><small>Audio</small><strong>Wireless Earbuds</strong></div>
+                </a>
+
+                <a class="fl-float-card fl-shoe-card parallax-card burst-trigger" data-depth="1.4" href="/Product?q=Shoes">
+                    <div class="fl-shoe-art"></div>
+                    <div><small>Fashion</small><strong>Running Shoes</strong></div>
+                </a>
+
+                <a class="fl-float-card fl-home-card parallax-card burst-trigger" data-depth=".9" href="/Product?q=Chair">
+                    <div class="fl-chair-art"><i></i><b></b></div>
+                    <div><small>Home</small><strong>Nordic Chair</strong></div>
+                </a>
+
+                <a class="fl-float-card fl-beauty-card parallax-card burst-trigger" data-depth="1.05" href="/Product?q=Serum">
+                    <div class="fl-beauty-art"><i></i></div>
+                    <div><small>Beauty</small><strong>Face Serum</strong></div>
+                </a>
+
+                <span class="fl-spark spark-1">✦</span>
+                <span class="fl-spark spark-2">✧</span>
+                <span class="fl-spark spark-3">✦</span>
+            </div>
+        </section>
+
+        <section class="fl-marquee" aria-label="Marketplace categories">
+            <div class="fl-marquee-track">
+                <span>Electronics</span><b>✦</b>
+                <span>Mobiles</span><b>✦</b>
+                <span>Fashion</span><b>✦</b>
+                <span>Beauty</span><b>✦</b>
+                <span>Home</span><b>✦</b>
+                <span>Gaming</span><b>✦</b>
+                <span>Books</span><b>✦</b>
+                <span>Sports</span><b>✦</b>
+                <span>Grocery</span><b>✦</b>
+                <span>Automotive</span><b>✦</b>
+
+                <span>Electronics</span><b>✦</b>
+                <span>Mobiles</span><b>✦</b>
+                <span>Fashion</span><b>✦</b>
+                <span>Beauty</span><b>✦</b>
+                <span>Home</span><b>✦</b>
+                <span>Gaming</span><b>✦</b>
+                <span>Books</span><b>✦</b>
+                <span>Sports</span><b>✦</b>
+                <span>Grocery</span><b>✦</b>
+                <span>Automotive</span><b>✦</b>
+            </div>
+        </section>
+
+        <section id="departments" class="fl-section fl-categories">
+            <div class="fl-section-head reveal">
+                <div>
+                    <span class="fl-kicker">EXPLORE DEPARTMENTS</span>
+                    <h2>Everything has its place.</h2>
+                </div>
+                <a href="/Product">View all departments →</a>
+            </div>
+
+            <div class="fl-bento">
+                <a class="fl-bento-card fl-bento-large tech reveal burst-trigger" href="/Product?q=Smartphone">
+                    <div class="fl-bento-copy">
+                        <span>TECHNOLOGY</span>
+                        <h3>Electronics & Mobiles</h3>
+                        <p>Phones, computers, audio, cameras and smart essentials.</p>
+                        <b>Explore tech →</b>
+                    </div>
+                    <div class="fl-bento-tech-art">
+                        <i class="device-main"></i>
+                        <i class="device-small"></i>
+                    </div>
+                </a>
+
+                <a class="fl-bento-card fashion reveal burst-trigger" href="/Product?q=Dress">
+                    <span>STYLE</span>
+                    <h3>Fashion</h3>
+                    <p>Modern everyday pieces.</p>
+                    <div class="fl-bento-symbol">✦</div>
+                </a>
+
+                <a class="fl-bento-card gaming reveal burst-trigger" href="/Product?q=Gaming">
+                    <span>PLAY</span>
+                    <h3>Gaming</h3>
+                    <p>Gear for every session.</p>
+                    <div class="fl-gamepad">◇</div>
+                </a>
+
+                <a class="fl-bento-card home reveal burst-trigger" href="/Product?q=Chair">
+                    <span>LIVING</span>
+                    <h3>Home & Furniture</h3>
+                    <p>Comfort, decor and lighting.</p>
+                    <div class="fl-bento-symbol">⌂</div>
+                </a>
+
+                <a class="fl-bento-card beauty reveal burst-trigger" href="/Product?q=Serum">
+                    <span>SELF CARE</span>
+                    <h3>Beauty</h3>
+                    <p>Skincare and personal care.</p>
+                    <div class="fl-bento-symbol">◇</div>
+                </a>
+
+                <a class="fl-bento-card fl-bento-wide active reveal burst-trigger" href="/Product?q=Football">
+                    <div>
+                        <span>MOVE MORE</span>
+                        <h3>Sports, Outdoor & Travel</h3>
+                        <p>Train, explore and go further.</p>
+                    </div>
+                    <div class="fl-active-pills">
+                        <i>SPORT</i><i>TRAVEL</i><i>OUTDOOR</i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="featured" class="fl-section fl-featured">
+            <div class="fl-section-head reveal">
+                <div>
+                    <span class="fl-kicker">TRENDING NOW</span>
+                    <h2>Floating favorites.</h2>
+                </div>
+                <a href="/Product">Shop all products →</a>
+            </div>
+
+            <div class="fl-feature-row">
+                <a class="fl-product-card pc-1 reveal burst-trigger" href="/Product?q=Earbuds">
+                    <span class="fl-tag">NEW</span>
+                    <div class="fl-prod-art prod-earbuds">
+                        <i></i><i></i>
+                    </div>
+                    <div class="fl-prod-body">
+                        <small>Electronics</small>
+                        <h3>Wireless Earbuds</h3>
+                        <div><strong>₹2,499</strong><span>♡</span></div>
+                    </div>
+                </a>
+
+                <a class="fl-product-card pc-2 reveal burst-trigger" href="/Product?q=Watch">
+                    <span class="fl-tag">POPULAR</span>
+                    <div class="fl-prod-art prod-watch"><i></i></div>
+                    <div class="fl-prod-body">
+                        <small>Watches</small>
+                        <h3>Classic Analog Watch</h3>
+                        <div><strong>₹4,999</strong><span>♡</span></div>
+                    </div>
+                </a>
+
+                <a class="fl-product-card pc-3 reveal burst-trigger" href="/Product?q=Chair">
+                    <span class="fl-tag">FEATURED</span>
+                    <div class="fl-prod-art prod-chair"><i></i><b></b></div>
+                    <div class="fl-prod-body">
+                        <small>Furniture</small>
+                        <h3>Nordic Lounge Chair</h3>
+                        <div><strong>₹12,999</strong><span>♡</span></div>
+                    </div>
+                </a>
+
+                <a class="fl-product-card pc-4 reveal burst-trigger" href="/Product?q=Serum">
+                    <span class="fl-tag">ESSENTIAL</span>
+                    <div class="fl-prod-art prod-serum"><i></i></div>
+                    <div class="fl-prod-body">
+                        <small>Beauty</small>
+                        <h3>Hydrating Face Serum</h3>
+                        <div><strong>₹1,299</strong><span>♡</span></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="fl-orbit-banner reveal">
+            <div class="fl-orbit-bubble bubble-a">Gaming</div>
+            <div class="fl-orbit-bubble bubble-b">Fashion</div>
+            <div class="fl-orbit-bubble bubble-c">Books</div>
+            <div class="fl-orbit-bubble bubble-d">Beauty</div>
+            <div class="fl-orbit-bubble bubble-e">Tech</div>
+            <div class="fl-orbit-bubble bubble-f">Home</div>
+
+            <div class="fl-orbit-copy">
+                <span class="fl-kicker light">THE FULL MARKETPLACE</span>
+                <h2>2000 products.<br />One beautiful place.</h2>
+                <p>Search less. Discover more.</p>
+                <a class="fl-btn fl-btn-light magnetic burst-trigger" href="/Product">
+                    Explore LegacyShop <span>→</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="how" class="fl-section fl-how">
+            <div class="fl-section-head reveal">
+                <div>
+                    <span class="fl-kicker">HOW LEGACYSHOP WORKS</span>
+                    <h2>Simple from start to finish.</h2>
+                </div>
+            </div>
+
+            <div class="fl-steps">
+                <article class="reveal">
+                    <span>01</span>
+                    <div class="fl-step-icon">⌕</div>
+                    <h3>Discover</h3>
+                    <p>Browse products across dozens of departments.</p>
+                </article>
+
+                <article class="reveal">
+                    <span>02</span>
+                    <div class="fl-step-icon">♡</div>
+                    <h3>Choose</h3>
+                    <p>Save favorites or add them directly to your cart.</p>
+                </article>
+
+                <article class="reveal">
+                    <span>03</span>
+                    <div class="fl-step-icon">◇</div>
+                    <h3>Checkout</h3>
+                    <p>Confirm delivery details through a simple checkout.</p>
+                </article>
+
+                <article class="reveal">
+                    <span>04</span>
+                    <div class="fl-step-icon">✓</div>
+                    <h3>Track</h3>
+                    <p>Review your purchases from your customer account.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="fl-final-cta reveal">
+            <div>
+                <span class="fl-kicker light">YOUR MARKETPLACE</span>
+                <h2>Find your next favorite thing.</h2>
+            </div>
+            <a class="fl-btn fl-btn-light magnetic burst-trigger" href="/Product">
+                Start shopping <span>→</span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="fl-footer">
+        <div>
+            <a class="fl-brand footer-brand" href="/">
+                <span class="fl-brand-mark footer-mark">L</span>
+                <span>Legacy<span>Shop</span></span>
+            </a>
+            <p>A modern marketplace for everyday discovery.</p>
+        </div>
+
+        <div class="fl-footer-links">
+            <a href="/Product">Shop</a>
+            <a href="/Account/CustomerLogin">Customer Login</a>
+            <a href="/Cart">Cart</a>
+            <a href="/Account/AdminLogin">Admin</a>
+        </div>
+
+        <div class="fl-footer-copy">© 2026 LegacyShop</div>
+    </footer>
+
+    <div id="fl-burst-layer"></div>
+</div>
+
+<script>
+(function () {
+    function reducedMotion() {
+        return window.matchMedia &&
+               window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function revealOnScroll() {
+        var els = document.querySelectorAll(".reveal");
+
+        if (!("IntersectionObserver" in window)) {
+            for (var i = 0; i < els.length; i++) els[i].classList.add("visible");
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        for (var i = 0; i < els.length; i++) observer.observe(els[i]);
+    }
+
+    function parallax() {
+        if (reducedMotion()) return;
+
+        var stage = document.getElementById("floating-stage");
+        if (!stage) return;
+
+        var cards = stage.querySelectorAll(".parallax-card");
+
+        stage.addEventListener("mousemove", function (e) {
+            var rect = stage.getBoundingClientRect();
+            var x = (e.clientX - rect.left) / rect.width - .5;
+            var y = (e.clientY - rect.top) / rect.height - .5;
+
+            for (var i = 0; i < cards.length; i++) {
+                var depth = parseFloat(cards[i].getAttribute("data-depth") || "1");
+                cards[i].style.setProperty("--px", (x * 16 * depth) + "px");
+                cards[i].style.setProperty("--py", (y * 12 * depth) + "px");
+            }
+        });
+
+        stage.addEventListener("mouseleave", function () {
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.setProperty("--px", "0px");
+                cards[i].style.setProperty("--py", "0px");
+            }
+        });
+    }
+
+    function magneticButtons() {
+        if (reducedMotion()) return;
+
+        var buttons = document.querySelectorAll(".magnetic");
+
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("mousemove", function (e) {
+                var rect = this.getBoundingClientRect();
+                var x = e.clientX - rect.left - rect.width / 2;
+                var y = e.clientY - rect.top - rect.height / 2;
+                this.style.transform = "translate(" + (x * .08) + "px," + (y * .08) + "px)";
+            });
+
+            buttons[i].addEventListener("mouseleave", function () {
+                this.style.transform = "";
+            });
+        }
+    }
+
+    function burst(x, y) {
+        if (reducedMotion()) return;
+
+        var layer = document.getElementById("fl-burst-layer");
+        if (!layer) return;
+
+        var burst = document.createElement("div");
+        burst.className = "fl-burst";
+        burst.style.left = x + "px";
+        burst.style.top = y + "px";
+
+        for (var i = 0; i < 14; i++) {
+            var dot = document.createElement("i");
+            var angle = Math.PI * 2 * i / 14;
+            var distance = 34 + Math.random() * 45;
+
+            dot.style.setProperty("--bx", (Math.cos(angle) * distance) + "px");
+            dot.style.setProperty("--by", (Math.sin(angle) * distance) + "px");
+
+            burst.appendChild(dot);
+        }
+
+        layer.appendChild(burst);
+
+        setTimeout(function () {
+            if (burst.parentNode) burst.parentNode.removeChild(burst);
+        }, 850);
+    }
+
+    function bindBursts() {
+        var els = document.querySelectorAll(".burst-trigger");
+
+        for (var i = 0; i < els.length; i++) {
+            els[i].addEventListener("click", function (e) {
+                burst(e.clientX, e.clientY);
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        revealOnScroll();
+        parallax();
+        magneticButtons();
+        bindBursts();
+    });
+})();
+</script>

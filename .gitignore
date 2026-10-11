@@ -1,0 +1,41 @@
+# Secrets / local configuration
+.env
+.env.*
+!.env.example
+*.user
+*.suo
+*.userprefs
+
+# Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# .NET build output
+**/bin/
+**/obj/
+Debug/
+Release/
+
+# NuGet restored packages
+packages/
+
+# Logs / temp
+*.log
+*.tmp
+*.cache
+logs/
+tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ngrok
+ngrok.yml
+ngrok-policy.yml
+
+# Backups
+*.bak
+*.backup
+*.before-*

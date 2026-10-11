@@ -1,0 +1,71 @@
+@model System.Collections.Generic.IList<Ecommerce.Core.Entities.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Inventory";
+    ViewData["AdminSection"] = "Inventory";
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">STOCK CONTROL</span>
+                    <h1>Inventory</h1>
+                    <p>Low-stock products appear first so they can be updated quickly.</p>
+                </div>
+            </div>
+
+            <div class="ap-stats">
+                <article class="ap-stat"><span>Active Products</span><strong>@ViewBag.TotalProducts</strong><small>marketplace catalog</small></article>
+                <article class="ap-stat"><span>Low Stock</span><strong>@ViewBag.LowStock</strong><small>10 units or fewer</small></article>
+                <article class="ap-stat"><span>Out of Stock</span><strong>@ViewBag.OutOfStock</strong><small>needs restock</small></article>
+                <article class="ap-stat"><span>Rows Shown</span><strong>@Model.Count</strong><small>lowest-stock items first</small></article>
+            </div>
+
+            <section class="ap-panel">
+                <div class="ap-panel-head"><div><small>RESTOCK WORKSPACE</small><h2>Inventory Levels</h2></div></div>
+
+                <div class="ap-table-wrap">
+                    <table class="ap-table">
+                        <thead><tr><th>Product</th><th>Category</th><th>Stock</th><th>Level</th><th>Update Quantity</th></tr></thead>
+                        <tbody>
+                        @foreach (var product in Model)
+                        {
+                            var percentage = product.StockQuantity > 50 ? 100 : product.StockQuantity * 2;
+
+                            <tr>
+                                <td><strong>@product.Name</strong><br /><small>#@product.Id</small></td>
+                                <td>@(product.Category == null ? "" : product.Category.Name)</td>
+                                <td><span class="ap-chip @(product.StockQuantity <= 0 ? "bad" : product.StockQuantity <= 10 ? "warn" : "ok")">@product.StockQuantity units</span></td>
+                                <td>
+                                    <div class="ap-stock-bar @(product.StockQuantity <= 10 ? "low" : "")">
+                                        <i style="width:@percentage%"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("InventoryAdjust", "Admin", FormMethod.Post, new { @class = "ap-form-inline" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@product.Id" />
+                                        <input class="ap-number" type="number" min="0" name="stockQuantity" value="@product.StockQuantity" />
+                                        <button class="ap-btn secondary small" type="submit">Update</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

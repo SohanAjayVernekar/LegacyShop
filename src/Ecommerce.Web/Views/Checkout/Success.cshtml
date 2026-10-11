@@ -1,0 +1,48 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Order Confirmed";
+}
+<link rel="stylesheet" href="/Content/checkout-page.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="checkout-page success-shell">
+    <header class="checkout-header">
+        <a class="checkout-brand" href="/">
+            <span class="checkout-brand-mark">L</span>
+            <span>Legacy<span>Shop</span></span>
+        </a>
+
+        <div class="checkout-header-center">
+            <span class="secure-dot">✓</span>
+            <span>Order Complete</span>
+        </div>
+
+        <a class="back-cart" href="/Customer/Dashboard">My Account →</a>
+    </header>
+
+    <main class="success-main">
+        <div class="success-orbit">
+            <div class="success-mark">✓</div>
+            <span class="success-spark one">✦</span>
+            <span class="success-spark two">✧</span>
+            <span class="success-spark three">✦</span>
+        </div>
+
+        <span class="checkout-kicker">ORDER CONFIRMED</span>
+        <h1>Thank you for your order.</h1>
+        <p>Your LegacyShop order has been created successfully and is now visible in your account.</p>
+
+        <div class="order-number-card">
+            <span>ORDER ID</span>
+            <strong>#@ViewBag.OrderId</strong>
+        </div>
+
+        <div class="success-actions">
+            <a class="place-order-btn inline" href="/Customer/Orders"><span>View My Orders</span><b>→</b></a>
+            <a class="secondary-success" href="/Product">Continue Shopping</a>
+        </div>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

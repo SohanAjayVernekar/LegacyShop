@@ -1,0 +1,69 @@
+@model System.Collections.Generic.IList<Ecommerce.Core.ViewModels.AdminProductViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Products";
+    ViewData["AdminSection"] = "Products";
+    var categoryNames = ViewBag.CategoryNames as System.Collections.Generic.Dictionary<int, string>;
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">CATALOG MANAGEMENT</span>
+                    <h1>Products</h1>
+                    <p>Manage the products available across the LegacyShop marketplace.</p>
+                </div>
+                <a class="ap-btn" href="/Admin/ProductCreate">+ Add Product</a>
+            </div>
+
+            <div class="ap-stats">
+                <article class="ap-stat"><span>Products loaded</span><strong>@Model.Count</strong><small>admin result set</small></article>
+                <article class="ap-stat"><span>Active</span><strong>@Model.Count(x => x.IsActive)</strong><small>visible products</small></article>
+                <article class="ap-stat"><span>Featured</span><strong>@Model.Count(x => x.IsFeatured)</strong><small>featured products</small></article>
+                <article class="ap-stat"><span>Low stock</span><strong>@Model.Count(x => x.StockQuantity <= 10)</strong><small>10 units or fewer</small></article>
+            </div>
+
+            <section class="ap-panel">
+                <div class="ap-panel-head">
+                    <div><small>MARKETPLACE CATALOG</small><h2>Product Library</h2></div>
+                    <span class="ap-chip ok">Live catalog</span>
+                </div>
+
+                <div class="ap-table-wrap">
+                    <table class="ap-table">
+                        <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr></thead>
+                        <tbody>
+                        @foreach (var product in Model)
+                        {
+                            string categoryName = "Category #" + product.CategoryId;
+                            if (categoryNames != null && categoryNames.ContainsKey(product.CategoryId))
+                            {
+                                categoryName = categoryNames[product.CategoryId];
+                            }
+
+                            <tr>
+                                <td><strong>@product.Name</strong><br /><small>@product.Slug</small></td>
+                                <td>@categoryName</td>
+                                <td>₹@product.Price.ToString("N0")</td>
+                                <td>@product.StockQuantity</td>
+                                <td><span class="ap-chip @(product.IsActive ? "ok" : "off")">@(product.IsActive ? "Active" : "Inactive")</span></td>
+                                <td><a class="ap-btn secondary small" href="/Admin/ProductEdit/@product.Id">Edit →</a></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

@@ -1,0 +1,59 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Reports";
+    ViewData["AdminSection"] = "Reports";
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">STORE ANALYTICS</span>
+                    <h1>Reports</h1>
+                    <p>A high-level snapshot of sales, customers, orders and catalog health.</p>
+                </div>
+            </div>
+
+            <div class="ap-stats">
+                <article class="ap-stat"><span>Total Sales</span><strong>₹@(((decimal)ViewBag.TotalSales).ToString("N0"))</strong><small>recorded revenue</small></article>
+                <article class="ap-stat"><span>Total Orders</span><strong>@ViewBag.TotalOrders</strong><small>all orders</small></article>
+                <article class="ap-stat"><span>Average Order</span><strong>₹@(((decimal)ViewBag.AverageOrder).ToString("N0"))</strong><small>average order value</small></article>
+                <article class="ap-stat"><span>Customers</span><strong>@ViewBag.TotalCustomers</strong><small>customer profiles</small></article>
+            </div>
+
+            <div class="ap-report-hero">
+                <section class="ap-panel ap-report-card">
+                    <div class="ap-panel-head"><div><small>SALES TREND</small><h2>Store Activity</h2></div><span class="ap-chip ok">Demo chart</span></div>
+                    <div class="ap-bars">
+                        <i style="height:32%"><span>Mon</span></i>
+                        <i style="height:48%"><span>Tue</span></i>
+                        <i style="height:41%"><span>Wed</span></i>
+                        <i style="height:66%"><span>Thu</span></i>
+                        <i style="height:58%"><span>Fri</span></i>
+                        <i style="height:89%"><span>Sat</span></i>
+                        <i style="height:74%"><span>Sun</span></i>
+                    </div>
+                </section>
+
+                <section class="ap-panel ap-report-card">
+                    <div class="ap-panel-head"><div><small>KEY INSIGHTS</small><h2>Marketplace Health</h2></div></div>
+                    <div class="ap-insights">
+                        <div class="ap-insight"><span>Top category</span><strong>@ViewBag.TopCategory</strong><small>@ViewBag.TopCategoryCount products</small></div>
+                        <div class="ap-insight"><span>Delivered orders</span><strong>@ViewBag.DeliveredOrders</strong></div>
+                        <div class="ap-insight"><span>Active products</span><strong>@ViewBag.ActiveProducts</strong></div>
+                        <div class="ap-insight"><span>Low-stock products</span><strong>@ViewBag.LowStock</strong></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

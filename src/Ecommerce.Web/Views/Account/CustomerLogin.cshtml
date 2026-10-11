@@ -1,0 +1,443 @@
+@model Ecommerce.Core.ViewModels.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Customer Login";
+}
+
+<style>
+html,body{margin:0;min-height:100%;background:#f6efe5;color:#28231f;font-family:"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+
+.fl-login-page{
+    min-height:100vh;position:relative;overflow:hidden;
+    background:
+        radial-gradient(circle at 15% 18%,rgba(218,184,151,.38),transparent 23%),
+        radial-gradient(circle at 88% 75%,rgba(194,209,197,.30),transparent 25%),
+        #f6efe5
+}
+.fl-login-orb{
+    position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none;opacity:.85
+}
+.fl-login-orb.a{width:190px;height:190px;background:#e8c7aa;left:-75px;top:31%}
+.fl-login-orb.b{width:150px;height:150px;background:#d6e0d2;right:-45px;top:17%}
+.fl-login-orb.c{width:90px;height:90px;background:#ead6dd;right:18%;bottom:-25px}
+
+.fl-login-header{
+    width:calc(100% - 36px);height:68px;margin:16px 18px 0;padding:0 18px 0 21px;
+    display:flex;align-items:center;justify-content:space-between;
+    position:relative;z-index:50;background:rgba(255,253,249,.83);
+    border:1px solid rgba(229,216,202,.95);border-radius:22px;
+    backdrop-filter:blur(16px);box-shadow:0 10px 35px rgba(68,45,29,.07)
+}
+.fl-login-brand{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:800;letter-spacing:-.5px}
+.fl-login-brand-mark{
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:#24211d;color:#fff;font-family:Georgia,serif;font-weight:400
+}
+.fl-login-brand-accent{color:#a96843}
+.fl-login-back{
+    padding:10px 14px;border:1px solid #dfd2c5;border-radius:999px;background:rgba(255,255,255,.6);
+    font-size:10px;font-weight:800;color:#645a52;transition:.2s
+}
+.fl-login-back:hover{transform:translateY(-2px);background:#fff}
+
+.fl-login-main{
+    min-height:calc(100vh - 100px);padding:42px 5vw 54px;
+    display:grid;grid-template-columns:1.02fr .98fr;gap:4vw;align-items:center;
+    position:relative;z-index:5
+}
+
+.fl-login-showcase{
+    min-height:555px;position:relative;overflow:hidden;
+    border-radius:38px;padding:54px 4vw;color:#fff;
+    background:
+      radial-gradient(circle at 75% 24%,rgba(255,255,255,.12),transparent 26%),
+      linear-gradient(145deg,#6f5545 0%,#342c26 58%,#27231f 100%);
+    box-shadow:0 28px 65px rgba(72,49,32,.15)
+}
+.fl-login-showcase.admin{
+    background:
+      radial-gradient(circle at 73% 20%,rgba(255,255,255,.10),transparent 28%),
+      linear-gradient(145deg,#4d433a 0%,#2d2925 58%,#1f1c19 100%)
+}
+.fl-login-kicker{
+    display:inline-flex;padding:8px 11px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);
+    font-size:8px;letter-spacing:1.7px;font-weight:800
+}
+.fl-login-showcase h1{
+    max-width:560px;font-family:Georgia,"Times New Roman",serif;
+    font-size:56px;line-height:1.03;font-weight:400;letter-spacing:-2px;margin:17px 0
+}
+.fl-login-showcase h1 em{display:block;color:#ddb18d;font-style:normal}
+.fl-login-showcase>p{
+    position:relative;z-index:5;max-width:530px;color:#ddd4cc;
+    font-size:14px;line-height:1.72;margin:0
+}
+
+.fl-login-benefits{position:relative;z-index:5;display:flex;gap:9px;flex-wrap:wrap;margin-top:28px}
+.fl-login-benefit{
+    padding:10px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);font-size:9px;font-weight:800;color:#ece5df
+}
+
+.fl-float{
+    position:absolute;background:rgba(255,255,255,.91);color:#2b2622;
+    border:1px solid rgba(255,255,255,.92);box-shadow:0 20px 42px rgba(20,15,11,.18);
+    backdrop-filter:blur(10px);border-radius:22px;z-index:4
+}
+.fl-float small,.fl-float strong{display:block}
+.fl-float small{font-size:7px;letter-spacing:1px;color:#8b8076;text-transform:uppercase}
+.fl-float strong{font-size:10px;margin-top:3px}
+
+.fl-float-main{
+    width:255px;right:9%;bottom:42px;padding:13px;
+    animation:flFloatOne 5.2s ease-in-out infinite
+}
+.fl-mini-market{
+    height:150px;border-radius:16px;background:linear-gradient(145deg,#dfc4a9,#b78160);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden
+}
+.fl-mini-phone{
+    width:68px;height:125px;border:5px solid #28231f;border-radius:16px;
+    background:linear-gradient(145deg,#494039,#84634f);transform:rotate(-7deg);
+    box-shadow:0 13px 22px rgba(30,20,14,.18)
+}
+.fl-mini-phone:before{
+    content:"";position:absolute;left:50%;top:5px;transform:translateX(-50%);
+    width:29px;height:8px;border-radius:0 0 6px 6px;background:#181512
+}
+.fl-mini-market:before,.fl-mini-market:after{
+    content:"";position:absolute;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.30)
+}
+.fl-mini-market:before{left:20px;top:24px;transform:rotate(-15deg)}
+.fl-mini-market:after{right:18px;bottom:26px;transform:rotate(14deg)}
+.fl-mini-market-foot{display:flex;justify-content:space-between;align-items:end;padding:11px 2px 1px}
+.fl-mini-market-foot b{font-size:10px}
+
+.fl-float-chip{
+    padding:11px 12px;display:flex;align-items:center;gap:9px;width:160px
+}
+.fl-float-chip i{
+    width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-style:normal;background:#efe4d8;color:#905e40;font-size:15px
+}
+.fl-chip-a{right:6%;top:44px;animation:flFloatTwo 4.5s ease-in-out infinite}
+.fl-chip-b{left:7%;bottom:84px;animation:flFloatThree 5.6s ease-in-out infinite}
+.fl-chip-c{left:14%;top:52%;animation:flFloatFour 4.9s ease-in-out infinite}
+
+.fl-admin-board{
+    position:absolute;right:7%;bottom:42px;width:310px;padding:15px;border-radius:24px;
+    background:#f0e5d9;color:#28231f;box-shadow:0 24px 48px rgba(0,0,0,.19);
+    animation:flFloatOne 5.3s ease-in-out infinite
+}
+.fl-admin-board-head{display:flex;justify-content:space-between;font-size:8px;letter-spacing:1.2px;font-weight:800}
+.fl-admin-board-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}
+.fl-admin-board-metrics i{height:42px;border-radius:10px;background:#d6c1ae}
+.fl-admin-board-chart{height:100px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid #cbb7a4;padding:0 8px}
+.fl-admin-board-chart b{flex:1;border-radius:5px 5px 0 0;background:#8e684f}
+.fl-admin-board-chart b:nth-child(1){height:35%}
+.fl-admin-board-chart b:nth-child(2){height:52%}
+.fl-admin-board-chart b:nth-child(3){height:46%}
+.fl-admin-board-chart b:nth-child(4){height:73%}
+.fl-admin-board-chart b:nth-child(5){height:61%}
+.fl-admin-board-chart b:nth-child(6){height:88%}
+
+.fl-login-spark{position:absolute;color:#e1b48e;font-size:20px;z-index:6}
+.fl-login-spark.s1{left:46%;top:34%}
+.fl-login-spark.s2{right:27%;top:19%;font-size:24px}
+.fl-login-spark.s3{left:30%;bottom:14%;font-size:16px}
+
+.fl-login-form-wrap{display:flex;align-items:center;justify-content:center}
+.fl-login-card{
+    width:100%;max-width:480px;padding:35px;border-radius:30px;
+    background:rgba(255,253,249,.91);border:1px solid rgba(224,210,196,.95);
+    box-shadow:0 24px 62px rgba(65,44,29,.12);backdrop-filter:blur(15px);
+    position:relative;overflow:hidden
+}
+.fl-login-card:before{
+    content:"";position:absolute;width:130px;height:130px;border-radius:50%;
+    right:-65px;top:-65px;background:#ead9ca;opacity:.55
+}
+.fl-login-card>*{position:relative;z-index:2}
+.fl-card-kicker{display:block;font-size:8px;letter-spacing:1.7px;color:#a96843;font-weight:800}
+.fl-login-card h2{
+    font-family:Georgia,"Times New Roman",serif;font-size:38px;font-weight:400;
+    letter-spacing:-.8px;margin:6px 0
+}
+.fl-login-muted{font-size:11px;color:#7b7168;margin:0 0 22px;line-height:1.6}
+
+.fl-auth-validation{
+    margin:0 0 15px;padding:11px 12px;border:1px solid #e6b9b0;
+    border-radius:12px;background:#fff0ed;color:#994b40;font-size:10px
+}
+.fl-auth-validation:empty{display:none}
+.fl-field{margin-bottom:15px}
+.fl-field label{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;font-size:10px;font-weight:800;color:#504840}
+.fl-field label span{font-size:8px;color:#9b9086;font-weight:500}
+.fl-input-shell{
+    display:flex;align-items:center;gap:9px;padding:0 12px;background:#fff;
+    border:1px solid #dcd0c3;border-radius:14px;transition:.2s
+}
+.fl-input-shell:focus-within{border-color:#a77a5c;box-shadow:0 0 0 4px rgba(167,122,92,.08)}
+.fl-input-shell>span{font-size:13px;color:#9a8f85}
+.fl-input-shell input{
+    width:100%;padding:13px 0;border:0;background:transparent;outline:none;font-size:12px;color:#312b26
+}
+.fl-field-error{display:block;margin-top:5px;font-size:9px;color:#a3473b}
+.fl-auth-meta{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:3px 0 19px;font-size:9px}
+.fl-remember{display:flex;align-items:center;gap:7px;color:#7b7168}
+.fl-remember input{accent-color:#29241f}
+.fl-forgot{font-weight:800;color:#8c5a3d}
+.fl-submit{
+    width:100%;border:0;border-radius:15px;padding:14px 17px;background:#28231f;color:#fff;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:11px;font-weight:800;cursor:pointer;transition:.18s
+}
+.fl-submit:hover{box-shadow:0 12px 24px rgba(37,31,26,.18);transform:translateY(-2px)}
+.fl-submit b{font-size:15px}
+.fl-demo{
+    margin-top:17px;padding:13px;border-radius:14px;background:#f5eee6;border:1px solid #eadfd3
+}
+.fl-demo>span{display:block;font-size:7px;letter-spacing:1.3px;color:#8c8177;font-weight:800;margin-bottom:6px}
+.fl-demo code{display:block;font-family:inherit;font-size:9px;color:#5f564e;line-height:1.65}
+.fl-switch-login{margin-top:13px;text-align:center;font-size:9px;color:#82776e}
+.fl-switch-login a{font-weight:800;color:#8a5739}
+
+#fl-login-burst-layer{position:fixed;inset:0;pointer-events:none;z-index:99999}
+.fl-burst{position:absolute;width:0;height:0}
+.fl-burst i{
+    position:absolute;width:6px;height:6px;border-radius:50%;
+    background:linear-gradient(135deg,#fff0c7,#c77f50);
+    box-shadow:0 0 8px rgba(255,224,180,.8);
+    animation:flBurst .8s ease-out forwards
+}
+
+@@keyframes flFloatOne{0%,100%{transform:translateY(4px) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@@keyframes flFloatTwo{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-11px) rotate(-1deg)}}
+@@keyframes flFloatThree{0%,100%{transform:translateY(3px) rotate(-2deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+@@keyframes flFloatFour{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@@keyframes flBurst{to{opacity:0;transform:translate(var(--bx),var(--by)) scale(1.25)}}
+
+@@media(max-width:980px){
+    .fl-login-main{grid-template-columns:1fr;padding-top:30px}
+    .fl-login-showcase{min-height:460px}
+    .fl-login-form-wrap{padding-bottom:20px}
+}
+@@media(max-width:650px){
+    .fl-login-header{width:calc(100% - 20px);height:62px;margin:10px 10px 0;padding:0 12px}
+    .fl-login-brand{font-size:18px}
+    .fl-login-back{padding:8px 10px}
+    .fl-login-main{padding:24px 5vw 45px}
+    .fl-login-showcase{display:none}
+    .fl-login-card{padding:28px 22px;border-radius:24px}
+    .fl-login-card h2{font-size:34px}
+}
+@@media(prefers-reduced-motion:reduce){
+    *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+
+
+<div class="fl-login-page">
+    <div class="fl-login-orb a"></div>
+    <div class="fl-login-orb b"></div>
+    <div class="fl-login-orb c"></div>
+
+    <header class="fl-login-header">
+        <a class="fl-login-brand" href="/">
+            <span class="fl-login-brand-mark">L</span>
+            <span>Legacy<span class="fl-login-brand-accent">Shop</span></span>
+        </a>
+        <a class="fl-login-back burst-login" href="/">← Back to Home</a>
+    </header>
+
+    <main class="fl-login-main">
+        <section class="fl-login-showcase">
+            <span class="fl-login-kicker">CUSTOMER MARKETPLACE ACCESS</span>
+
+            <h1>
+                Welcome back.
+                <em>Your marketplace is waiting.</em>
+            </h1>
+
+            <p>
+                Continue discovering products, manage your orders and return to
+                everything you saved inside LegacyShop.
+            </p>
+
+            <div class="fl-login-benefits">
+                <span class="fl-login-benefit">✓ Track orders</span>
+                <span class="fl-login-benefit">♡ Save favorites</span>
+                <span class="fl-login-benefit">◇ Quick checkout</span>
+            </div>
+
+            <div class="fl-float fl-float-chip fl-chip-a">
+                <i>♡</i>
+                <div><small>Wishlist</small><strong>Save your favorites</strong></div>
+            </div>
+
+            <div class="fl-float fl-float-chip fl-chip-b">
+                <i>□</i>
+                <div><small>Orders</small><strong>Track purchases</strong></div>
+            </div>
+
+            <div class="fl-float fl-float-chip fl-chip-c">
+                <i>◇</i>
+                <div><small>Cart</small><strong>Continue shopping</strong></div>
+            </div>
+
+            <div class="fl-float fl-float-main">
+                <div class="fl-mini-market">
+                    <div class="fl-mini-phone"></div>
+                </div>
+                <div class="fl-mini-market-foot">
+                    <div><small>Featured</small><strong>Explore 2000+ products</strong></div>
+                    <b>→</b>
+                </div>
+            </div>
+
+            <span class="fl-login-spark s1">✦</span>
+            <span class="fl-login-spark s2">✧</span>
+            <span class="fl-login-spark s3">✦</span>
+        </section>
+
+        <section class="fl-login-form-wrap">
+            <div class="fl-login-card">
+                <span class="fl-card-kicker">CUSTOMER LOGIN</span>
+                <h2>Sign in to LegacyShop</h2>
+                <p class="fl-login-muted">Enter your account details to continue shopping.</p>
+
+                @Html.ValidationSummary(true, "", new { @class = "fl-auth-validation" })
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="fl-field">
+                        <label>Email address <span>Required</span></label>
+                        <div class="fl-input-shell">
+                            <span>✉</span>
+                            @Html.TextBoxFor(m => m.Email, new {
+                                type = "email",
+                                placeholder = "you@example.com",
+                                required = "required",
+                                autocomplete = "email"
+                            })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "fl-field-error" })
+                    </div>
+
+                    <div class="fl-field">
+                        <label>Password <span>Required</span></label>
+                        <div class="fl-input-shell">
+                            <span>◇</span>
+                            @Html.PasswordFor(m => m.Password, new {
+                                placeholder = "Enter your password",
+                                required = "required",
+                                autocomplete = "current-password"
+                            })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "fl-field-error" })
+                    </div>
+
+                    <div class="fl-auth-meta">
+                        <label class="fl-remember"><input type="checkbox" /> <span>Remember me</span></label>
+                        <a class="fl-forgot" href="#">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="fl-submit burst-login">
+                        <span>Sign in</span>
+                        <b>→</b>
+                    </button>
+                }
+
+                <div class="fl-demo">
+                    <span>DEMO CUSTOMER</span>
+                    <code>customer@legacyshop.local</code>
+                    <code>Customer@123</code>
+                </div>
+
+                <div class="fl-switch-login">
+                    Store administrator? <a href="/Account/AdminLogin">Admin login →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="fl-login-burst-layer"></div>
+</div>
+
+
+<script>
+(function () {
+    function reducedMotion() {
+        return window.matchMedia &&
+               window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function burst(x, y) {
+        if (reducedMotion()) return;
+
+        var layer = document.getElementById("fl-login-burst-layer");
+        if (!layer) return;
+
+        var burst = document.createElement("div");
+        burst.className = "fl-burst";
+        burst.style.left = x + "px";
+        burst.style.top = y + "px";
+
+        for (var i = 0; i < 14; i++) {
+            var dot = document.createElement("i");
+            var angle = Math.PI * 2 * i / 14;
+            var distance = 32 + Math.random() * 42;
+
+            dot.style.setProperty("--bx", (Math.cos(angle) * distance) + "px");
+            dot.style.setProperty("--by", (Math.sin(angle) * distance) + "px");
+            burst.appendChild(dot);
+        }
+
+        layer.appendChild(burst);
+
+        setTimeout(function () {
+            if (burst.parentNode) burst.parentNode.removeChild(burst);
+        }, 850);
+    }
+
+    function bindBurst() {
+        var targets = document.querySelectorAll(".burst-login");
+
+        for (var i = 0; i < targets.length; i++) {
+            targets[i].addEventListener("click", function (e) {
+                burst(e.clientX, e.clientY);
+            });
+        }
+    }
+
+    function magneticButton() {
+        if (reducedMotion()) return;
+
+        var button = document.querySelector(".fl-submit");
+        if (!button) return;
+
+        button.addEventListener("mousemove", function (e) {
+            var rect = button.getBoundingClientRect();
+            var x = e.clientX - rect.left - rect.width / 2;
+            var y = e.clientY - rect.top - rect.height / 2;
+            button.style.transform = "translate(" + (x * .025) + "px," + (y * .06) + "px)";
+        });
+
+        button.addEventListener("mouseleave", function () {
+            button.style.transform = "";
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        bindBurst();
+        magneticButton();
+    });
+})();
+</script>
+

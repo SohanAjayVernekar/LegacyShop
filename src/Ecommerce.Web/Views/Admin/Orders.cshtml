@@ -1,0 +1,72 @@
+@model System.Collections.Generic.IList<Ecommerce.Core.Entities.Order>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Orders";
+    ViewData["AdminSection"] = "Orders";
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">ORDER OPERATIONS</span>
+                    <h1>Orders</h1>
+                    <p>Review orders and move them through the fulfillment workflow.</p>
+                </div>
+            </div>
+
+            <div class="ap-stats">
+                <article class="ap-stat"><span>Loaded Orders</span><strong>@Model.Count</strong><small>most recent orders</small></article>
+                <article class="ap-stat"><span>Processing</span><strong>@Model.Count(x => x.Status == "Processing")</strong><small>awaiting fulfillment</small></article>
+                <article class="ap-stat"><span>Delivered</span><strong>@Model.Count(x => x.Status == "Delivered")</strong><small>completed orders</small></article>
+                <article class="ap-stat"><span>Order Value</span><strong>₹@Model.Sum(x => x.TotalAmount).ToString("N0")</strong><small>loaded order total</small></article>
+            </div>
+
+            <section class="ap-panel">
+                <div class="ap-panel-head"><div><small>FULFILLMENT QUEUE</small><h2>Order Management</h2></div></div>
+
+                <div class="ap-table-wrap">
+                    <table class="ap-table">
+                        <thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Current Status</th><th>Update</th></tr></thead>
+                        <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td><strong>@order.OrderNumber</strong></td>
+                                <td>@(order.Customer == null ? "Customer" : order.Customer.FullName)</td>
+                                <td>@order.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                                <td>₹@order.TotalAmount.ToString("N0")</td>
+                                <td><span class="ap-chip @(order.Status == "Delivered" ? "ok" : order.Status == "Cancelled" ? "bad" : "warn")">@order.Status</span></td>
+                                <td>
+                                    @using (Html.BeginForm("OrderStatus", "Admin", FormMethod.Post, new { @class = "ap-form-inline" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@order.Id" />
+                                        <select class="ap-select" name="status">
+                                            <option value="Processing">Processing</option>
+                                            <option value="Packed">Packed</option>
+                                            <option value="Shipped">Shipped</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
+                                        <button class="ap-btn secondary small" type="submit">Save</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

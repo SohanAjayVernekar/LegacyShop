@@ -1,0 +1,30 @@
+@{
+    var section = Convert.ToString(ViewData["AdminSection"]);
+}
+<aside class="ap-side">
+    <a class="ap-brand" href="/">
+        <span class="ap-brand-mark">L</span>
+        <span>Legacy<span class="ap-brand-accent">Shop</span></span>
+    </a>
+
+    <div class="ap-side-label">ADMINISTRATION</div>
+
+    <nav class="ap-nav">
+        <a class="@(section == "Dashboard" ? "active" : "")" href="/Admin/Dashboard"><span class="ap-nav-icon">⌂</span>Dashboard</a>
+        <a class="@(section == "Products" ? "active" : "")" href="/Admin/Products"><span class="ap-nav-icon">▦</span>Products</a>
+        <a class="@(section == "Categories" ? "active" : "")" href="/Admin/Categories"><span class="ap-nav-icon">◫</span>Categories</a>
+        <a class="@(section == "Orders" ? "active" : "")" href="/Admin/Orders"><span class="ap-nav-icon">□</span>Orders</a>
+        <a class="@(section == "Customers" ? "active" : "")" href="/Admin/Customers"><span class="ap-nav-icon">◎</span>Customers</a>
+        <a class="@(section == "Inventory" ? "active" : "")" href="/Admin/Inventory"><span class="ap-nav-icon">≡</span>Inventory</a>
+        <a class="@(section == "Reports" ? "active" : "")" href="/Admin/Reports"><span class="ap-nav-icon">↗</span>Reports</a>
+        <a class="@(section == "Settings" ? "active" : "")" href="/Admin/Settings"><span class="ap-nav-icon">⚙</span>Settings</a>
+    </nav>
+
+    <div class="ap-side-card">
+        <span>STORE STATUS</span>
+        <strong>LegacyShop Admin</strong>
+        <a href="/">Open storefront →</a>
+    </div>
+
+    <a class="ap-logout" href="/Account/Logout">↪ Logout</a>
+</aside>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f2e9" />
+    <title>@ViewBag.Title - LegacyShop</title>
+    <link rel="stylesheet" href="/Content/site.css" />
+    <link rel="stylesheet" href="/Content/stage4b.css" />
+</head>
+<body>
+    <div id="glitter-layer" class="glitter-layer" aria-hidden="true"></div>
+
+    @RenderBody()
+
+    <script>
+    (function () {
+        function reducedMotion() {
+            return window.matchMedia &&
+                   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        }
+
+        function glitter() {
+            if (reducedMotion()) return;
+            var layer = document.getElementById("glitter-layer");
+            if (!layer) return;
+
+            for (var i = 0; i < 34; i++) {
+                var star = document.createElement("i");
+                star.className = "glitter-star";
+                star.style.left = (Math.random() * 100) + "vw";
+                star.style.top = (Math.random() * 100) + "vh";
+                star.style.setProperty("--delay", (Math.random() * 5) + "s");
+                star.style.setProperty("--duration", (3 + Math.random() * 4) + "s");
+                star.style.setProperty("--size", (2 + Math.random() * 4) + "px");
+                layer.appendChild(star);
+            }
+        }
+
+        function burst(x, y) {
+            if (reducedMotion()) return;
+
+            var node = document.createElement("div");
+            node.className = "burst";
+
+            for (var i = 0; i < 14; i++) {
+                var p = document.createElement("i");
+                var angle = (Math.PI * 2 * i) / 14;
+                var distance = 35 + Math.random() * 55;
+                p.style.setProperty("--x", (Math.cos(angle) * distance) + "px");
+                p.style.setProperty("--y", (Math.sin(angle) * distance) + "px");
+                node.appendChild(p);
+            }
+
+            node.style.left = x + "px";
+            node.style.top = y + "px";
+            document.body.appendChild(node);
+
+            setTimeout(function () {
+                if (node.parentNode) node.parentNode.removeChild(node);
+            }, 850);
+        }
+
+        function bindBurst() {
+            var nodes = document.querySelectorAll(".burst-trigger, .btn-dark, .product-card");
+            for (var i = 0; i < nodes.length; i++) {
+                nodes[i].addEventListener("click", function (e) {
+                    burst(e.clientX, e.clientY);
+                });
+            }
+        }
+
+        function bindHero3D() {
+            if (reducedMotion()) return;
+            var scene = document.querySelector(".hero-3d-stage");
+            var model = document.querySelector(".hero-3d-object");
+
+            if (!scene || !model) return;
+
+            scene.addEventListener("mousemove", function (e) {
+                var rect = scene.getBoundingClientRect();
+                var x = (e.clientX - rect.left) / rect.width - .5;
+                var y = (e.clientY - rect.top) / rect.height - .5;
+
+                model.style.transform =
+                    "rotateX(" + (-8 - y * 14) + "deg) " +
+                    "rotateY(" + (18 + x * 22) + "deg) " +
+                    "translateY(-6px)";
+            });
+
+            scene.addEventListener("mouseleave", function () {
+                model.style.transform = "rotateX(-8deg) rotateY(18deg)";
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            glitter();
+            bindBurst();
+            bindHero3D();
+        });
+    })();
+    </script>
+</body>
+</html>

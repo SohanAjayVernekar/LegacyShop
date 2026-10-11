@@ -1,0 +1,130 @@
+@model System.Collections.Generic.IList<Ecommerce.Core.Entities.Address>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Addresses";
+    ViewData["CustomerSection"] = "Addresses";
+}
+<link rel="stylesheet" href="/Content/customer-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="cp-shell">
+    @Html.Partial("_CustomerSidebar")
+    <main class="cp-main">
+        @Html.Partial("_CustomerTopbar")
+
+        <section class="cp-content">
+            <div class="cp-heading">
+                <div>
+                    <span class="cp-kicker">DELIVERY DETAILS</span>
+                    <h1>Addresses</h1>
+                    <p>Manage saved delivery locations for future orders.</p>
+                </div>
+                <a class="cp-btn secondary" href="/Cart">View Cart →</a>
+            </div>
+
+            @if (TempData["CustomerMessage"] != null)
+            {
+                <div class="cp-message">@TempData["CustomerMessage"]</div>
+            }
+
+            <div class="cp-address-layout">
+                <section class="cp-panel">
+                    <div class="cp-panel-head"><div><small>SAVED PLACES</small><h2>Your Addresses</h2></div></div>
+
+                    @if (Model.Count == 0)
+                    {
+                        <div class="cp-empty">
+                            <b>No addresses saved yet.</b>
+                            <span>Add your first delivery address using the form.</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="cp-address-grid">
+                        @foreach (var address in Model)
+                        {
+                            <article class="cp-address">
+                                <div class="cp-address-head">
+                                    <h3>@address.Label</h3>
+                                    @if (address.IsDefault)
+                                    {
+                                        <span class="cp-chip">Default</span>
+                                    }
+                                </div>
+
+                                <p>
+                                    @address.Line1<br />
+                                    @if (!string.IsNullOrWhiteSpace(address.Line2))
+                                    {
+                                        @address.Line2<br />
+                                    }
+                                    @address.City, @address.State @address.PostalCode<br />
+                                    @address.Country
+                                </p>
+
+                                <div class="cp-address-actions">
+                                    @if (!address.IsDefault)
+                                    {
+                                        using (Html.BeginForm("AddressDefault", "Customer", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@address.Id" />
+                                            <button class="cp-btn secondary small" type="submit">Make Default</button>
+                                        }
+                                    }
+
+                                    @using (Html.BeginForm("AddressDelete", "Customer", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@address.Id" />
+                                        <button class="cp-btn danger small" type="submit">Delete</button>
+                                    }
+                                </div>
+                            </article>
+                        }
+                        </div>
+                    }
+                </section>
+
+                <section class="cp-panel">
+                    <div class="cp-panel-head"><div><small>NEW ADDRESS</small><h2>Add Delivery Address</h2></div></div>
+
+                    @using (Html.BeginForm("AddressCreate", "Customer", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="cp-field">
+                            <label>Label</label>
+                            <input type="text" name="label" placeholder="Home, Work..." required />
+                        </div>
+
+                        <div class="cp-field">
+                            <label>Address line 1</label>
+                            <input type="text" name="line1" placeholder="Street and building" required />
+                        </div>
+
+                        <div class="cp-field">
+                            <label>Address line 2</label>
+                            <input type="text" name="line2" placeholder="Apartment, landmark (optional)" />
+                        </div>
+
+                        <div class="cp-form-grid">
+                            <div class="cp-field"><label>City</label><input type="text" name="city" required /></div>
+                            <div class="cp-field"><label>State</label><input type="text" name="state" required /></div>
+                        </div>
+
+                        <div class="cp-form-grid">
+                            <div class="cp-field"><label>Postal code</label><input type="text" name="postalCode" required /></div>
+                            <div class="cp-field"><label>Country</label><input type="text" name="country" value="India" required /></div>
+                        </div>
+
+                        <button class="cp-btn" type="submit">+ Save Address</button>
+                    }
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

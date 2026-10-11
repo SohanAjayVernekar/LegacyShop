@@ -1,0 +1,28 @@
+@{
+    var section = Convert.ToString(ViewData["CustomerSection"]);
+}
+<aside class="cp-side">
+    <a class="cp-brand" href="/">
+        <span class="cp-brand-mark">L</span>
+        <span>Legacy<span class="cp-brand-accent">Shop</span></span>
+    </a>
+
+    <div class="cp-side-label">MY ACCOUNT</div>
+
+    <nav class="cp-nav">
+        <a class="@(section == "Dashboard" ? "active" : "")" href="/Customer/Dashboard"><span class="cp-nav-icon">⌂</span>Dashboard</a>
+        <a class="@(section == "Shop" ? "active" : "")" href="/Product"><span class="cp-nav-icon">▦</span>Shop</a>
+        <a class="@(section == "Orders" ? "active" : "")" href="/Customer/Orders"><span class="cp-nav-icon">□</span>Orders</a>
+        <a class="@(section == "Cart" ? "active" : "")" href="/Cart"><span class="cp-nav-icon">◇</span>Cart</a>
+        <a class="@(section == "Wishlist" ? "active" : "")" href="/Customer/Wishlist"><span class="cp-nav-icon">♡</span>Wishlist</a>
+        <a class="@(section == "Addresses" ? "active" : "")" href="/Customer/Addresses"><span class="cp-nav-icon">⌖</span>Addresses</a>
+    </nav>
+
+    <div class="cp-side-help">
+        <span>Need help?</span>
+        <strong>Customer Support</strong>
+        <a href="mailto:support@legacyshop.local">Contact support →</a>
+    </div>
+
+    <a class="cp-logout" href="/Account/Logout">↪ Logout</a>
+</aside>

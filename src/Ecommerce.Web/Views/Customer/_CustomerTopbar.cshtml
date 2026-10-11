@@ -1,0 +1,11 @@
+<header class="cp-top">
+    <div class="cp-search"><span>⌕</span><input type="text" placeholder="Search LegacyShop" /></div>
+
+    <div class="cp-user">
+        <div class="cp-avatar">@(string.IsNullOrEmpty(Convert.ToString(Session["DisplayName"])) ? "U" : Convert.ToString(Session["DisplayName"]).Substring(0,1))</div>
+        <div>
+            <strong>@(Session["DisplayName"] ?? "Customer")</strong>
+            <span>Customer</span>
+        </div>
+    </div>
+</header>

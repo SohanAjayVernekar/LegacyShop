@@ -1,0 +1,73 @@
+@model System.Collections.Generic.IList<Ecommerce.Core.Entities.Customer>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Customers";
+    ViewData["AdminSection"] = "Customers";
+    var orderCounts = ViewBag.OrderCounts as System.Collections.Generic.Dictionary<int, int>;
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">CUSTOMER DIRECTORY</span>
+                    <h1>Customers</h1>
+                    <p>View account activity and enable or disable customer profiles.</p>
+                </div>
+            </div>
+
+            <div class="ap-stats">
+                <article class="ap-stat"><span>Customers</span><strong>@Model.Count</strong><small>loaded accounts</small></article>
+                <article class="ap-stat"><span>Active</span><strong>@Model.Count(x => x.IsActive)</strong><small>enabled accounts</small></article>
+                <article class="ap-stat"><span>Inactive</span><strong>@Model.Count(x => !x.IsActive)</strong><small>disabled accounts</small></article>
+                <article class="ap-stat"><span>With Orders</span><strong>@Model.Count(x => orderCounts != null && orderCounts.ContainsKey(x.Id) && orderCounts[x.Id] > 0)</strong><small>purchasing customers</small></article>
+            </div>
+
+            <section class="ap-panel">
+                <div class="ap-panel-head"><div><small>ACCOUNT DIRECTORY</small><h2>Customer Accounts</h2></div></div>
+
+                <div class="ap-table-wrap">
+                    <table class="ap-table">
+                        <thead><tr><th>Customer</th><th>Phone</th><th>Joined</th><th>Orders</th><th>Status</th><th></th></tr></thead>
+                        <tbody>
+                        @foreach (var customer in Model)
+                        {
+                            var count = orderCounts != null && orderCounts.ContainsKey(customer.Id) ? orderCounts[customer.Id] : 0;
+
+                            <tr>
+                                <td>
+                                    <div class="ap-customer">
+                                        <div class="ap-customer-avatar">@(string.IsNullOrEmpty(customer.FullName) ? "C" : customer.FullName.Substring(0,1))</div>
+                                        <div><strong>@customer.FullName</strong><span>@customer.Email</span></div>
+                                    </div>
+                                </td>
+                                <td>@customer.Phone</td>
+                                <td>@customer.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                                <td>@count</td>
+                                <td><span class="ap-chip @(customer.IsActive ? "ok" : "off")">@(customer.IsActive ? "Active" : "Disabled")</span></td>
+                                <td>
+                                    @using (Html.BeginForm("CustomerToggle", "Admin", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@customer.Id" />
+                                        <button class="ap-btn secondary small" type="submit">@(customer.IsActive ? "Disable" : "Enable")</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

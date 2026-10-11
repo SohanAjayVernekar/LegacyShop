@@ -1,0 +1,156 @@
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44444444-4444-4444-4444-444444444444}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Ecommerce.Web</RootNamespace>
+    <AssemblyName>Ecommerce.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin/</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin/</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+
+    <Reference Include="System.Web.Mvc">
+      <HintPath>../../packages/Microsoft.AspNet.Mvc.5.2.9/lib/net45/System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="System.Web.Razor">
+      <HintPath>../../packages/Microsoft.AspNet.Razor.3.2.9/lib/net45/System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="System.Web.WebPages">
+      <HintPath>../../packages/Microsoft.AspNet.WebPages.3.2.9/lib/net45/System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>../../packages/Microsoft.AspNet.WebPages.3.2.9/lib/net45/System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="System.Web.WebPages.Deployment">
+      <HintPath>../../packages/Microsoft.AspNet.WebPages.3.2.9/lib/net45/System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>../../packages/Microsoft.Web.Infrastructure.1.0.0.0/lib/net40/Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>../../packages/Newtonsoft.Json.12.0.3/lib/net45/Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="EntityFramework">
+      <HintPath>../../packages/EntityFramework.6.4.4/lib/net45/EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>../../packages/EntityFramework.6.4.4/lib/net45/EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Global.asax.cs" />
+    <Compile Include="App_Start/RouteConfig.cs" />
+    <Compile Include="Controllers/HomeController.cs" />
+    <Compile Include="Controllers/AccountController.cs" />
+    <Compile Include="Controllers/ProductController.cs" />
+    <Compile Include="Controllers/CartController.cs" />
+    <Compile Include="Controllers/CheckoutController.cs" />
+    <Compile Include="Controllers/CustomerController.cs" />
+    <Compile Include="Controllers/AdminController.cs" />
+    <Compile Include="Infrastructure/ServiceFactory.cs" />
+    <Compile Include="Infrastructure/SessionRoleAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure/SessionCart.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Views/Web.config" />
+    <Content Include="Views/Shared/_Layout.cshtml" />
+    <Content Include="Views/Home/Index.cshtml" />
+    <Content Include="Views/Account/CustomerLogin.cshtml" />
+    <Content Include="Views/Account/AdminLogin.cshtml" />
+    <Content Include="Views/Product/Index.cshtml" />
+    <Content Include="Views/Product/Detail.cshtml" />
+    <Content Include="Views/Cart/Index.cshtml" />
+    <Content Include="Views/Checkout/Index.cshtml" />
+    <Content Include="Views/Checkout/Success.cshtml" />
+    <Content Include="Views/Customer/Dashboard.cshtml" />
+    <Content Include="Views/Admin/Dashboard.cshtml" />
+    <Content Include="Views/Admin/Products.cshtml" />
+    <Content Include="Views/Admin/ProductEdit.cshtml" />
+    <Content Include="Views/Admin/Orders.cshtml" />
+    <Content Include="Views/Admin/Categories.cshtml" />
+    <Content Include="Views/Admin/Customers.cshtml" />
+    <Content Include="Views/Admin/Inventory.cshtml" />
+    <Content Include="Views/Admin/Reports.cshtml" />
+    <Content Include="Views/Admin/Settings.cshtml" />
+    <Content Include="Views/Admin/_AdminSidebar.cshtml" />
+    <Content Include="Views/Admin/_AdminTopbar.cshtml" />
+    <Content Include="Content/admin-pages.css" />
+    <Content Include="Views/Customer/Orders.cshtml" />
+    <Content Include="Views/Customer/Wishlist.cshtml" />
+    <Content Include="Views/Customer/Addresses.cshtml" />
+    <Content Include="Views/Customer/_CustomerSidebar.cshtml" />
+    <Content Include="Views/Customer/_CustomerTopbar.cshtml" />
+    <Content Include="Content/customer-pages.css" />
+    <Content Include="Content/cart-page.css" />
+    <Content Include="Content/checkout-page.css" />
+    <Content Include="Content/landing-premium.css" />
+    <Content Include="Content/landing-floating.css" />
+    <Content Include="Content/floating-app-theme.css" />
+    <Content Include="Scripts/floating-app-theme.js" />
+    <Content Include="Content/site.css" />
+    <Content Include="Content/stage4b.css" />
+    <Content Include="Content/stage4c.css" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Ecommerce.Core/Ecommerce.Core.csproj">
+      <Project>{11111111-1111-1111-1111-111111111111}</Project>
+      <Name>Ecommerce.Core</Name>
+    </ProjectReference>
+
+    <ProjectReference Include="../Ecommerce.Data/Ecommerce.Data.csproj">
+      <Project>{22222222-2222-2222-2222-222222222222}</Project>
+      <Name>Ecommerce.Data</Name>
+    </ProjectReference>
+
+    <ProjectReference Include="../Ecommerce.Services/Ecommerce.Services.csproj">
+      <Project>{33333333-3333-3333-3333-333333333333}</Project>
+      <Name>Ecommerce.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildBinPath)/Microsoft.CSharp.targets" />
+</Project>

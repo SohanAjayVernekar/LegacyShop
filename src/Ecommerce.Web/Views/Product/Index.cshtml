@@ -1,0 +1,189 @@
+@model Ecommerce.Core.ViewModels.ProductListViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Shop";
+}
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+<div class="shop-page animated-site">
+    <div class="ambient-orb orb-shop-a"></div>
+    <div class="ambient-orb orb-shop-b"></div>
+
+    <header class="site-header shop-header">
+        <a class="brand burst-trigger" href="/">
+            <span class="brand-mark">L</span>
+            <span>Legacy<span class="brand-accent">Shop</span></span>
+        </a>
+
+        <form method="get" action="/Product" class="shop-search">
+            <span>⌕</span>
+            <input name="q" value="@Model.Query" placeholder="Search 2000 products..." />
+            @if (Model.CategoryId.HasValue)
+            {
+                <input type="hidden" name="categoryId" value="@Model.CategoryId.Value" />
+            }
+            <button type="submit" class="burst-trigger">Search</button>
+        </form>
+
+        <nav class="main-nav compact-nav">
+            <a href="/Account/CustomerLogin">Account</a>
+            <a class="nav-pill burst-trigger" href="/Cart">Cart</a>
+        </nav>
+    </header>
+
+    <section class="shop-hero animated-shop-hero">
+        <div>
+            <span class="soft-badge shimmer-badge">2000 PRODUCT COLLECTION</span>
+            <h1>Objects for spaces that feel like you.</h1>
+            <p>Explore the full LegacyShop catalog without loading all 2000 items at once.</p>
+        </div>
+
+        <div class="shop-orbit-art">
+            <div class="mini-3d-cube mini-cube-one"></div>
+            <div class="mini-3d-cube mini-cube-two"></div>
+            <div class="mini-3d-cube mini-cube-three"></div>
+            <span class="shop-spark s1">✦</span>
+            <span class="shop-spark s2">✧</span>
+            <span class="shop-spark s3">✦</span>
+        </div>
+    </section>
+
+    <main class="catalog-layout">
+        <aside class="catalog-sidebar">
+            <div class="catalog-filter-head">
+                <span>FILTERS</span>
+                <a href="/Product">Clear</a>
+            </div>
+
+            <div class="filter-block">
+                <h4>Categories</h4>
+
+                <a class="@(Model.CategoryId == null ? "active" : "")" href="/Product">
+                    <span>All products</span><b>→</b>
+                </a>
+
+                @foreach (var category in Model.Categories)
+                {
+                    <a class="@(Model.CategoryId == category.Id ? "active" : "")"
+                       href="/Product?categoryId=@category.Id">
+                        <span>@category.Name</span><b>→</b>
+                    </a>
+                }
+            </div>
+
+            <div class="catalog-note floating-note">
+                <span>CATALOG SIZE</span>
+                <strong>@Model.TotalCount products found</strong>
+                <p>Showing @Model.PageSize products per page for better performance.</p>
+            </div>
+        </aside>
+
+        <section class="catalog-main">
+            <div class="catalog-heading">
+                <div>
+                    <span class="section-kicker">SHOP · PAGE @Model.Page OF @Model.TotalPages</span>
+                    <h2>@(string.IsNullOrEmpty(Model.Query) ? "All Products" : "Search results")</h2>
+                </div>
+
+                <span>@Model.TotalCount products</span>
+            </div>
+
+            <div class="product-grid animated-product-grid">
+                @foreach (var product in Model.Products)
+                {
+                    var artClass = product.Id % 4 == 1
+                        ? "product-art-chair"
+                        : (product.Id % 4 == 2
+                            ? "product-art-lamp"
+                            : (product.Id % 4 == 3 ? "product-art-vase" : "product-art-textile"));
+
+                    <article class="product-card burst-trigger">
+                        <a href="/Product/Detail/@product.Id">
+                            <div class="product-art @artClass">
+                                <span class="product-tag">@product.CategoryName</span>
+                                <span class="card-glitter cg-one">✦</span>
+                                <span class="card-glitter cg-two">✧</span>
+                                <div class="product-object"></div>
+                                <div class="product-card-actions"><span>Open product</span><b>→</b></div>
+                            </div>
+
+                            <div class="product-body">
+                                <div>
+                                    <span class="product-category">@product.CategoryName</span>
+                                    <h3>@product.Name</h3>
+                                </div>
+
+                                <div class="product-price-row">
+                                    <strong>₹@product.Price.ToString("N0")</strong>
+                                    <small>@(product.StockQuantity > 0 ? "In stock" : "Out of stock")</small>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                }
+            </div>
+
+            @if (Model.TotalPages > 1)
+            {
+                <nav class="pagination">
+                    @if (Model.Page > 1)
+                    {
+                        <a class="page-arrow burst-trigger"
+                           href="@Url.Action("Index", "Product", new { categoryId = Model.CategoryId, q = Model.Query, page = Model.Page - 1 })">
+                            ← Previous
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="page-arrow disabled">← Previous</span>
+                    }
+
+                    <div class="page-numbers">
+                        @{
+                            var start = Math.Max(1, Model.Page - 2);
+                            var end = Math.Min(Model.TotalPages, Model.Page + 2);
+                        }
+
+                        @if (start > 1)
+                        {
+                            <a href="@Url.Action("Index", "Product", new { categoryId = Model.CategoryId, q = Model.Query, page = 1 })">1</a>
+                            if (start > 2)
+                            {
+                                <span>…</span>
+                            }
+                        }
+
+                        @for (var i = start; i <= end; i++)
+                        {
+                            <a class="@(i == Model.Page ? "active" : "")"
+                               href="@Url.Action("Index", "Product", new { categoryId = Model.CategoryId, q = Model.Query, page = i })">@i</a>
+                        }
+
+                        @if (end < Model.TotalPages)
+                        {
+                            if (end < Model.TotalPages - 1)
+                            {
+                                <span>…</span>
+                            }
+
+                            <a href="@Url.Action("Index", "Product", new { categoryId = Model.CategoryId, q = Model.Query, page = Model.TotalPages })">@Model.TotalPages</a>
+                        }
+                    </div>
+
+                    @if (Model.Page < Model.TotalPages)
+                    {
+                        <a class="page-arrow burst-trigger"
+                           href="@Url.Action("Index", "Product", new { categoryId = Model.CategoryId, q = Model.Query, page = Model.Page + 1 })">
+                            Next →
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="page-arrow disabled">Next →</span>
+                    }
+                </nav>
+            }
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

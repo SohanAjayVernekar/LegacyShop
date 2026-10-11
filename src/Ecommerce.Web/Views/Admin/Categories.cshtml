@@ -1,0 +1,73 @@
+@model System.Collections.Generic.IList<Ecommerce.Core.Entities.Category>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Categories";
+    ViewData["AdminSection"] = "Categories";
+    var counts = ViewBag.ProductCounts as System.Collections.Generic.Dictionary<int, int>;
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">DEPARTMENT STRUCTURE</span>
+                    <h1>Categories</h1>
+                    <p>Create and manage the departments used by the 2000-product marketplace.</p>
+                </div>
+            </div>
+
+            @if (TempData["AdminMessage"] != null)
+            {
+                <div class="ap-message">@TempData["AdminMessage"]</div>
+            }
+
+            <section class="ap-panel">
+                <div class="ap-panel-head"><div><small>NEW DEPARTMENT</small><h3>Add Category</h3></div></div>
+
+                @using (Html.BeginForm("CategoryCreate", "Admin", FormMethod.Post, new { @class = "ap-form-inline" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input class="ap-input wide" type="text" name="name" placeholder="e.g. Smart Home" required />
+                    <button class="ap-btn" type="submit">+ Create Category</button>
+                }
+            </section>
+
+            <div class="ap-category-grid">
+                @foreach (var category in Model)
+                {
+                    var productCount = counts != null && counts.ContainsKey(category.Id) ? counts[category.Id] : 0;
+
+                    <article class="ap-category-card">
+                        <div class="ap-category-card-top">
+                            <div>
+                                <h3>@category.Name</h3>
+                                <p>@category.Slug</p>
+                            </div>
+                            <span class="ap-chip @(category.IsActive ? "ok" : "off")">@(category.IsActive ? "Active" : "Hidden")</span>
+                        </div>
+
+                        <div class="ap-category-meta">
+                            <span><strong>@productCount</strong> products</span>
+
+                            @using (Html.BeginForm("CategoryToggle", "Admin", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@category.Id" />
+                                <button class="ap-btn secondary small" type="submit">@(category.IsActive ? "Disable" : "Enable")</button>
+                            }
+                        </div>
+                    </article>
+                }
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>

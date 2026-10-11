@@ -1,0 +1,21 @@
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22222222-2222-2222-2222-222222222222}</ProjectGuid><OutputType>Library</OutputType>
+    <RootNamespace>Ecommerce.Data</RootNamespace><AssemblyName>Ecommerce.Data</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' "><OutputPath>bin\Debug\</OutputPath></PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "><OutputPath>bin\Release\</OutputPath><Optimize>true</Optimize></PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" /><Reference Include="System.Core" /><Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="EntityFramework"><HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath><Private>True</Private></Reference>
+    <Reference Include="EntityFramework.SqlServer"><HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath><Private>True</Private></Reference>
+  </ItemGroup>
+  <ItemGroup><Compile Include="LegacyEcommerceContext.cs" /><Compile Include="Repositories\ProductRepository.cs" /><Compile Include="Repositories\CategoryRepository.cs" /><Compile Include="Repositories\UserRepository.cs" /><Compile Include="Repositories\OrderRepository.cs" /></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ecommerce.Core\Ecommerce.Core.csproj"><Project>{11111111-1111-1111-1111-111111111111}</Project><Name>Ecommerce.Core</Name></ProjectReference>
+  </ItemGroup>
+  <ItemGroup><None Include="packages.config" /></ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

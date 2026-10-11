@@ -1,0 +1,79 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Settings";
+    ViewData["AdminSection"] = "Settings";
+}
+<link rel="stylesheet" href="/Content/admin-pages.css" />
+<link rel="stylesheet" href="/Content/floating-app-theme.css" />
+
+
+<div class="ap-shell">
+    @Html.Partial("_AdminSidebar")
+    <main class="ap-main">
+        @Html.Partial("_AdminTopbar")
+
+        <section class="ap-content">
+            <div class="ap-heading">
+                <div>
+                    <span class="ap-kicker">STORE CONFIGURATION</span>
+                    <h1>Settings</h1>
+                    <p>Configure demo store preferences for the current admin session.</p>
+                </div>
+            </div>
+
+            @if (ViewBag.Saved != null)
+            {
+                <div class="ap-message">@ViewBag.Saved</div>
+            }
+
+            @using (Html.BeginForm("Settings", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="ap-settings">
+                    <section class="ap-panel">
+                        <div class="ap-panel-head"><div><small>GENERAL</small><h2>Store Details</h2></div></div>
+
+                        <div class="ap-field">
+                            <label>Store name</label>
+                            <input type="text" name="storeName" value="@ViewBag.StoreName" />
+                        </div>
+
+                        <div class="ap-field">
+                            <label>Admin email</label>
+                            <input type="email" name="storeEmail" value="@ViewBag.StoreEmail" />
+                        </div>
+
+                        <div class="ap-field">
+                            <label>Low stock warning threshold</label>
+                            <input type="number" min="0" name="lowStockThreshold" value="@ViewBag.LowStockThreshold" />
+                        </div>
+                    </section>
+
+                    <section class="ap-panel">
+                        <div class="ap-panel-head"><div><small>OPERATIONS</small><h2>Store Controls</h2></div></div>
+
+                        <div class="ap-toggle-row">
+                            <div><strong>Maintenance mode</strong><span>Demo session preference only.</span></div>
+                            <input type="checkbox" name="maintenanceMode" value="true" @(Convert.ToBoolean(ViewBag.MaintenanceMode) ? "checked" : "") />
+                        </div>
+
+                        <div class="ap-toggle-row">
+                            <div><strong>Catalog size</strong><span>Marketplace products currently available.</span></div>
+                            <span class="ap-chip ok">2000 products</span>
+                        </div>
+
+                        <div class="ap-toggle-row">
+                            <div><strong>Runtime</strong><span>Legacy MVC demo environment.</span></div>
+                            <span class="ap-chip warn">Mono / MVC 5</span>
+                        </div>
+                    </section>
+                </div>
+
+                <button class="ap-btn" type="submit">Save Settings</button>
+            }
+        </section>
+    </main>
+</div>
+
+<script src="/Scripts/floating-app-theme.js"></script>
