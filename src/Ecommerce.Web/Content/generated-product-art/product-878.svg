@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Soundbar 0875">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(118,35%,91%)"/><stop offset="1" stop-color="hsl(161,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(118,42%,58%)"/><stop offset="1" stop-color="hsl(161,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(315,42%,72%)"/><stop offset="1" stop-color="hsl(118,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(315,42%,72%)"/><stop offset="1" stop-color="hsl(161,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(315,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="470" cy="235" r="21" fill="rgba(255,255,255,.18)" /><circle cx="357" cy="56" r="40" fill="rgba(255,246,225,.22)" /><circle cx="212" cy="240" r="13" fill="rgba(70,50,38,.07)" /><circle cx="440" cy="293" r="31" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 387 410 449 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(4 -3) rotate(-4 320 245) scale(1.033)">
+<rect x="100" y="210" width="440" height="105" rx="38" fill="#2d2925" /><circle cx="175" cy="262" r="28" fill="hsl(118,42%,58%)" /><circle cx="465" cy="262" r="28" fill="hsl(118,42%,58%)" /><rect x="255" y="248" width="130" height="26" rx="13" fill="hsl(315,42%,72%)" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">TV &amp; AUDIO</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Soundbar 0875</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-878-E9FA36</text>
+</svg>

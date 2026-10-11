@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Hydrating Face Serum 0052">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(193,35%,91%)"/><stop offset="1" stop-color="hsl(252,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(193,42%,58%)"/><stop offset="1" stop-color="hsl(252,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(36,42%,72%)"/><stop offset="1" stop-color="hsl(193,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(36,42%,72%)"/><stop offset="1" stop-color="hsl(252,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(36,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="298" cy="82" r="21" fill="rgba(255,255,255,.18)" /><circle cx="116" cy="292" r="25" fill="rgba(255,246,225,.22)" /><circle cx="81" cy="322" r="28" fill="rgba(70,50,38,.07)" /><circle cx="125" cy="158" r="24" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 384 410 440 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(18 1) rotate(3 320 245) scale(0.965)">
+<rect x="285" y="55" width="70" height="58" rx="10" fill="#2d2925" /><rect x="236.5" y="108" width="167" height="270" rx="34" fill="url(#glass)" stroke="rgba(255,255,255,.65)" stroke-width="5"/><rect x="261.5" y="215" width="117" height="70" rx="14" fill="#fffaf4" opacity=".76"/>
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">BEAUTY &amp; PERSONAL CARE</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Hydrating Face Serum 0052</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-55-BF33C9</text>
+</svg>

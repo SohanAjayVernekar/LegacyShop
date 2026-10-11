@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Gaming Console 1840">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(106,35%,91%)"/><stop offset="1" stop-color="hsl(143,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(106,42%,58%)"/><stop offset="1" stop-color="hsl(143,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(293,42%,72%)"/><stop offset="1" stop-color="hsl(106,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(293,42%,72%)"/><stop offset="1" stop-color="hsl(143,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(293,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="56" cy="203" r="38" fill="rgba(255,255,255,.18)" /><circle cx="410" cy="191" r="12" fill="rgba(255,246,225,.22)" /><circle cx="351" cy="287" r="30" fill="rgba(70,50,38,.07)" /><circle cx="360" cy="128" r="25" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 393 410 425 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(-4 -1) rotate(-4 320 245) scale(0.977)">
+<rect x="170" y="105" width="300" height="195" rx="38" fill="url(#obj)" /><rect x="265" y="295" width="110" height="68" rx="28" fill="#2d2925" /><circle cx="300" cy="330" r="10" fill="#fffaf4" /><circle cx="340" cy="330" r="10" fill="#fffaf4" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">GAMING</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Gaming Console 1840</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1843-A0138F</text>
+</svg>

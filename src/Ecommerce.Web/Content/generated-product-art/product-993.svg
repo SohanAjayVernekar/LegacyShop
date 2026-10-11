@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Abstract Wall Art 0990">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(83,35%,91%)"/><stop offset="1" stop-color="hsl(166,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(83,42%,58%)"/><stop offset="1" stop-color="hsl(166,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(264,42%,72%)"/><stop offset="1" stop-color="hsl(83,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(264,42%,72%)"/><stop offset="1" stop-color="hsl(166,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(264,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="509" cy="268" r="37" fill="rgba(255,255,255,.18)" /><circle cx="103" cy="234" r="41" fill="rgba(255,246,225,.22)" /><circle cx="361" cy="65" r="15" fill="rgba(70,50,38,.07)" /><circle cx="378" cy="118" r="22" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 373 410 468 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(-2 0) rotate(-2 320 245) scale(0.987)">
+<rect x="130" y="65" width="380" height="315" rx="18" fill="#7c6049" /><rect x="150" y="85" width="340" height="275" rx="10" fill="#f3e8dc" /><circle cx="250" cy="185" r="68" fill="hsl(83,42%,58%)" /><rect x="335" y="125" width="85" height="160" rx="18" fill="hsl(264,42%,72%)" transform="rotate(12 377 205)"/><line x1="205" y1="310" x2="440" y2="120" stroke="#2d2925" stroke-width="12" opacity=".25"/>
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">DECOR</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Abstract Wall Art 0990</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-993-F24A3E</text>
+</svg>

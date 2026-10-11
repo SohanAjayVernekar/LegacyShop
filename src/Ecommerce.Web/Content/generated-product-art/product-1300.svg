@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Classic Analog Watch 1297">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(24,35%,91%)"/><stop offset="1" stop-color="hsl(120,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(24,42%,58%)"/><stop offset="1" stop-color="hsl(120,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(195,42%,72%)"/><stop offset="1" stop-color="hsl(24,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(195,42%,72%)"/><stop offset="1" stop-color="hsl(120,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(195,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="590" cy="339" r="26" fill="rgba(255,255,255,.18)" /><circle cx="550" cy="171" r="30" fill="rgba(255,246,225,.22)" /><circle cx="74" cy="122" r="33" fill="rgba(70,50,38,.07)" /><circle cx="329" cy="187" r="15" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 351 410 481 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(-12 -12) rotate(7 320 245) scale(0.993)">
+<rect x="282" y="30" width="76" height="390" rx="35" fill="url(#obj)" /><rect x="225" y="145" width="190" height="180" rx="50%" fill="#2d2925" stroke="#c9b39e" stroke-width="10"/><line x1="320" y1="235" x2="320" y2="185" stroke="#fffaf4" stroke-width="6" stroke-linecap="round"/><line x1="320" y1="235" x2="362" y2="260" stroke="#fffaf4" stroke-width="6" stroke-linecap="round"/>
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">WATCHES</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Classic Analog Watch 1297</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1300-9DA4BC</text>
+</svg>

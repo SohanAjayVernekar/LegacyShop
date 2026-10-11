@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Badminton Racket 0450">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(275,35%,91%)"/><stop offset="1" stop-color="hsl(326,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(275,42%,58%)"/><stop offset="1" stop-color="hsl(326,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(122,42%,72%)"/><stop offset="1" stop-color="hsl(275,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(122,42%,72%)"/><stop offset="1" stop-color="hsl(326,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(122,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="259" cy="367" r="14" fill="rgba(255,255,255,.18)" /><circle cx="165" cy="76" r="32" fill="rgba(255,246,225,.22)" /><circle cx="455" cy="262" r="15" fill="rgba(70,50,38,.07)" /><circle cx="218" cy="111" r="23" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 385 410 467 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(13 6) rotate(-5 320 245) scale(1.043)">
+<ellipse cx="290" cy="180" rx="110" ry="140" fill="none" stroke="#2d2925" stroke-width="20"/><line x1="360" y1="285" x2="455" y2="400" stroke="#2d2925" stroke-width="24" stroke-linecap="round"/><line x1="210" y1="80" x2="210" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="230" y1="80" x2="230" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="250" y1="80" x2="250" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="270" y1="80" x2="270" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="290" y1="80" x2="290" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="310" y1="80" x2="310" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="330" y1="80" x2="330" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="350" y1="80" x2="350" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" /><line x1="370" y1="80" x2="370" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="3" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">SPORTS &amp; FITNESS</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Badminton Racket 0450</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-453-16AF04</text>
+</svg>

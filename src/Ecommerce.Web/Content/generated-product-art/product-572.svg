@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Portable Keyboard 0569">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(174,35%,91%)"/><stop offset="1" stop-color="hsl(216,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(174,42%,58%)"/><stop offset="1" stop-color="hsl(216,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(340,42%,72%)"/><stop offset="1" stop-color="hsl(174,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(340,42%,72%)"/><stop offset="1" stop-color="hsl(216,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(340,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="80" cy="209" r="30" fill="rgba(255,255,255,.18)" /><circle cx="324" cy="378" r="26" fill="rgba(255,246,225,.22)" /><circle cx="379" cy="153" r="30" fill="rgba(70,50,38,.07)" /><circle cx="127" cy="256" r="41" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 390 410 450 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(-16 -2) rotate(6 320 245) scale(1.011)">
+<rect x="105" y="155" width="430" height="165" rx="28" fill="#2d2925" /><rect x="125" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="143" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="153" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="171" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="181" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="209" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="227" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="237" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="255" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="265" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="283" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="293" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="321" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="339" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="349" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="367" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="377" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="405" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="423" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="433" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="451" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="461" y="175" width="24" height="115" rx="3" fill="#fffaf4" /><rect x="479" y="175" width="14" height="70" rx="3" fill="#2d2925" /><rect x="489" y="175" width="24" height="115" rx="3" fill="#fffaf4" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">MUSICAL INSTRUMENTS</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Portable Keyboard 0569</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-572-7E4974</text>
+</svg>

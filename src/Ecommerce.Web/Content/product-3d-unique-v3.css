@@ -1,0 +1,217 @@
+/*
+ LegacyShop V3 uniqueness layer
+ --------------------------------
+ Goal: products of the same family must not look like exact duplicates.
+
+ The existing V2 semantic model still decides WHAT the object is.
+ V3 adds a deterministic visual fingerprint per product:
+ - 12 silhouette/layout variants
+ - unique scale and angle
+ - unique hue treatment
+ - unique decorative geometry
+ - unique edition stamp
+*/
+
+.product-art.ls3d-ready,
+.detail-art.ls3d-ready,
+.cart-thumb.ls3d-ready,
+.ls3d-mini-host{
+    --variant-accent: rgba(255,255,255,.42);
+}
+
+.ls3d-model{
+    scale: var(--v-scale,1);
+    translate: var(--v-x,0) var(--v-y,0);
+    filter:
+        hue-rotate(var(--v-hue-shift,0deg))
+        drop-shadow(0 26px 19px rgba(45,31,22,.22));
+}
+
+/* Additional background signature so even same product family is visibly different */
+.ls3d-scene{
+    background:
+        radial-gradient(
+            circle at var(--pattern-x,62%) var(--pattern-y,26%),
+            rgba(255,255,255,.34),
+            transparent 18%
+        );
+}
+
+.ls3d-scene:after{
+    transform:rotate(var(--pattern-rot,0deg));
+}
+
+/* 12 deterministic layout/silhouette variations */
+[data-ls3d-variant="0"] .ls3d-model{transform-origin:50% 50%}
+[data-ls3d-variant="1"] .ls3d-model{transform-origin:35% 55%}
+[data-ls3d-variant="2"] .ls3d-model{transform-origin:65% 52%}
+[data-ls3d-variant="3"] .ls3d-model{width:53%;height:72%}
+[data-ls3d-variant="4"] .ls3d-model{width:64%;height:59%}
+[data-ls3d-variant="5"] .ls3d-model{width:55%;height:74%}
+[data-ls3d-variant="6"] .ls3d-model{width:67%;height:58%}
+[data-ls3d-variant="7"] .ls3d-model{width:61%;height:70%}
+[data-ls3d-variant="8"] .ls3d-model{width:52%;height:70%}
+[data-ls3d-variant="9"] .ls3d-model{width:66%;height:64%}
+[data-ls3d-variant="10"] .ls3d-model{width:57%;height:76%}
+[data-ls3d-variant="11"] .ls3d-model{width:69%;height:61%}
+
+/* Product family-specific shape changes. These are what stop exact repeats. */
+
+/* Keyboards */
+[data-ls3d-variant="1"] .ls3d-keyboard .kb-board,
+[data-ls3d-variant="5"] .ls3d-keyboard .kb-board{border-radius:22px;transform:perspective(320px) rotateX(50deg) skewX(-5deg)}
+[data-ls3d-variant="2"] .ls3d-keyboard .kb-board,
+[data-ls3d-variant="8"] .ls3d-keyboard .kb-board{width:74%;left:13%}
+[data-ls3d-variant="3"] .ls3d-keyboard .kb-board,
+[data-ls3d-variant="9"] .ls3d-keyboard .kb-board{height:39%;top:34%;border-radius:8px}
+[data-ls3d-variant="4"] .ls3d-keyboard .kb-keys,
+[data-ls3d-variant="10"] .ls3d-keyboard .kb-keys{background:repeating-linear-gradient(90deg,#eee 0 5%,transparent 5% 7%),repeating-linear-gradient(0deg,#ddd 0 15%,transparent 15% 22%)}
+
+/* Serum / beauty bottles */
+[data-ls3d-variant="1"] .ls3d-serum .bottle,
+[data-ls3d-variant="7"] .ls3d-serum .bottle{width:46%;left:27%;border-radius:28px}
+[data-ls3d-variant="2"] .ls3d-serum .bottle,
+[data-ls3d-variant="8"] .ls3d-serum .bottle{height:68%;bottom:5%;border-radius:10px 10px 32px 32px}
+[data-ls3d-variant="3"] .ls3d-serum .cap,
+[data-ls3d-variant="9"] .ls3d-serum .cap{width:25%;left:37.5%}
+[data-ls3d-variant="4"] .ls3d-serum .label,
+[data-ls3d-variant="10"] .ls3d-serum .label{left:34%;right:34%;height:18%}
+
+/* Bags */
+[data-ls3d-variant="1"] .ls3d-bag .bag-body,
+[data-ls3d-variant="6"] .ls3d-bag .bag-body{height:48%;bottom:18%;border-radius:30px 30px 18px 18px}
+[data-ls3d-variant="2"] .ls3d-bag .bag-body,
+[data-ls3d-variant="8"] .ls3d-bag .bag-body{width:54%;left:23%;height:64%}
+[data-ls3d-variant="3"] .ls3d-bag .bag-strap,
+[data-ls3d-variant="9"] .ls3d-bag .bag-strap{width:62%;left:19%;height:50%}
+
+/* Shoes */
+[data-ls3d-variant="1"] .ls3d-shoe .upper{transform:rotate(-6deg);left:15%}
+[data-ls3d-variant="2"] .ls3d-shoe .upper{transform:rotate(5deg);bottom:31%}
+[data-ls3d-variant="3"] .ls3d-shoe .upper{width:66%;left:17%;height:50%}
+[data-ls3d-variant="4"] .ls3d-shoe .sole{height:13%;bottom:19%}
+[data-ls3d-variant="8"] .ls3d-shoe .upper{border-radius:40% 28% 26% 32%}
+
+/* Wall art */
+[data-ls3d-variant="1"] .ls3d-wallart .art-frame{width:58%;left:21%;height:78%}
+[data-ls3d-variant="2"] .ls3d-wallart .art-frame{width:80%;left:10%;height:58%;top:16%}
+[data-ls3d-variant="3"] .ls3d-wallart .art-shape.a{border-radius:12px;transform:rotate(28deg)}
+[data-ls3d-variant="4"] .ls3d-wallart .art-shape.b{border-radius:4px;transform:rotate(-20deg)}
+[data-ls3d-variant="5"] .ls3d-wallart .art-line{height:10px;border-radius:999px}
+[data-ls3d-variant="8"] .ls3d-wallart .art-frame{border-width:6px}
+
+/* Building blocks */
+[data-ls3d-variant="1"] .ls3d-blocks .b1{left:10%;bottom:22%}
+[data-ls3d-variant="1"] .ls3d-blocks .b4{right:12%;bottom:55%}
+[data-ls3d-variant="2"] .ls3d-blocks .b2{left:55%;bottom:12%;transform:rotate(18deg)}
+[data-ls3d-variant="3"] .ls3d-blocks .b3{left:24%;bottom:49%;transform:rotate(-12deg)}
+[data-ls3d-variant="4"] .ls3d-blocks .block{border-radius:3px}
+[data-ls3d-variant="5"] .ls3d-blocks .b4{width:34%;height:20%;right:8%;bottom:46%}
+[data-ls3d-variant="8"] .ls3d-blocks .b1{transform:rotate(-18deg)}
+[data-ls3d-variant="9"] .ls3d-blocks .b2{transform:rotate(13deg)}
+
+/* Phones */
+[data-ls3d-variant="1"] .ls3d-phone .device{inset:4% 28% 0%;border-radius:32px}
+[data-ls3d-variant="2"] .ls3d-phone .device{inset:8% 17% 5%;border-radius:20px}
+[data-ls3d-variant="3"] .ls3d-phone .device{transform:rotate(8deg)}
+[data-ls3d-variant="4"] .ls3d-phone .device{transform:rotate(-8deg)}
+[data-ls3d-variant="8"] .ls3d-phone .device{border-width:5px}
+
+/* Laptops */
+[data-ls3d-variant="1"] .ls3d-laptop .screen{left:5%;right:5%;height:52%}
+[data-ls3d-variant="2"] .ls3d-laptop .screen{left:15%;right:15%;height:61%}
+[data-ls3d-variant="3"] .ls3d-laptop .base{left:0;right:0;height:18%}
+[data-ls3d-variant="4"] .ls3d-laptop .screen{border-radius:7px}
+
+/* Watches */
+[data-ls3d-variant="1"] .ls3d-watch .face,
+[data-ls3d-variant="7"] .ls3d-watch .face{border-radius:25%}
+[data-ls3d-variant="2"] .ls3d-watch .face,
+[data-ls3d-variant="8"] .ls3d-watch .face{width:52%;left:24%;top:26%}
+[data-ls3d-variant="3"] .ls3d-watch .strap{width:19%;left:40.5%}
+
+/* Chairs */
+[data-ls3d-variant="1"] .ls3d-chair .back{border-radius:12px;height:48%}
+[data-ls3d-variant="2"] .ls3d-chair .back{width:44%;left:28%;height:60%}
+[data-ls3d-variant="3"] .ls3d-chair .seat{width:74%;left:13%}
+[data-ls3d-variant="4"] .ls3d-chair .leg.l1{left:20%}
+[data-ls3d-variant="4"] .ls3d-chair .leg.l2{right:20%}
+
+/* Speakers */
+[data-ls3d-variant="1"] .ls3d-speaker .speaker-box{width:43%;left:28.5%;border-radius:28px}
+[data-ls3d-variant="2"] .ls3d-speaker .speaker-box{width:66%;left:17%;height:54%;top:22%}
+[data-ls3d-variant="3"] .ls3d-speaker .woofer{width:32%;left:34%}
+
+/* Cameras */
+[data-ls3d-variant="1"] .ls3d-camera .cam-body{width:62%;left:19%;height:58%}
+[data-ls3d-variant="2"] .ls3d-camera .lens{width:40%;left:30%}
+[data-ls3d-variant="3"] .ls3d-camera .cam-body{border-radius:8px}
+
+/* Generic package fallback */
+[data-ls3d-variant="1"] .ls3d-box .pack{width:46%;left:27%;border-radius:22px}
+[data-ls3d-variant="2"] .ls3d-box .pack{width:70%;left:15%;height:56%;top:15%}
+[data-ls3d-variant="3"] .ls3d-box .pack{transform:rotate(7deg)}
+[data-ls3d-variant="4"] .ls3d-box .pack{transform:rotate(-7deg)}
+
+/* Per-product decorative fingerprints */
+.ls3d-unique-detail{
+    position:absolute;
+    z-index:2;
+    width:20px;
+    height:20px;
+    opacity:.62;
+    pointer-events:none;
+}
+.ls3d-unique-detail.detail-0{border:1px solid rgba(255,255,255,.72);border-radius:50%}
+.ls3d-unique-detail.detail-1{width:26px;height:8px;border-radius:999px;background:rgba(255,255,255,.38)}
+.ls3d-unique-detail.detail-2{border:2px solid rgba(90,62,43,.16);transform:rotate(45deg)}
+.ls3d-unique-detail.detail-3{width:10px;height:10px;border-radius:50%;background:rgba(255,244,215,.75)}
+.ls3d-unique-detail.detail-4{width:30px;height:2px;background:rgba(255,255,255,.52)}
+.ls3d-unique-detail.detail-5{width:14px;height:14px;border-radius:4px;background:rgba(82,57,39,.10)}
+
+.ls3d-edition{
+    left:auto!important;
+    top:auto!important;
+    right:10px;
+    bottom:10px;
+    width:auto;
+    height:auto;
+    padding:4px 6px;
+    border-radius:999px;
+    background:rgba(255,253,249,.65);
+    color:rgba(69,51,39,.66);
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:.06em;
+    transform:none!important;
+    backdrop-filter:blur(6px);
+}
+
+/* Different variants also change card-art atmosphere */
+[data-ls3d-variant="0"]{--variant-accent:rgba(255,239,214,.28)}
+[data-ls3d-variant="1"]{--variant-accent:rgba(220,239,236,.30)}
+[data-ls3d-variant="2"]{--variant-accent:rgba(231,221,245,.30)}
+[data-ls3d-variant="3"]{--variant-accent:rgba(246,220,220,.28)}
+[data-ls3d-variant="4"]{--variant-accent:rgba(220,229,247,.30)}
+[data-ls3d-variant="5"]{--variant-accent:rgba(238,234,206,.30)}
+[data-ls3d-variant="6"]{--variant-accent:rgba(223,243,216,.28)}
+[data-ls3d-variant="7"]{--variant-accent:rgba(244,222,205,.30)}
+[data-ls3d-variant="8"]{--variant-accent:rgba(216,236,244,.28)}
+[data-ls3d-variant="9"]{--variant-accent:rgba(239,216,232,.28)}
+[data-ls3d-variant="10"]{--variant-accent:rgba(232,232,232,.32)}
+[data-ls3d-variant="11"]{--variant-accent:rgba(247,232,203,.30)}
+
+.product-art.ls3d-ready:before,
+.detail-art.ls3d-ready:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(135deg,transparent 38%,var(--variant-accent) 100%);
+    z-index:0;
+}
+
+@media(prefers-reduced-motion:reduce){
+    .ls3d-model{transition:none!important}
+}

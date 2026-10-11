@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Baby Stroller 1702">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(192,35%,91%)"/><stop offset="1" stop-color="hsl(250,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(192,42%,58%)"/><stop offset="1" stop-color="hsl(250,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(10,42%,72%)"/><stop offset="1" stop-color="hsl(192,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(10,42%,72%)"/><stop offset="1" stop-color="hsl(250,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(10,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="239" cy="208" r="38" fill="rgba(255,255,255,.18)" /><circle cx="160" cy="92" r="12" fill="rgba(255,246,225,.22)" /><circle cx="302" cy="306" r="38" fill="rgba(70,50,38,.07)" /><circle cx="95" cy="324" r="24" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 356 410 429 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(0 7) rotate(-1 320 245) scale(0.984)">
+<path d="M210 120h200l-35 170H245z" fill="url(#obj)"/><line x1="405" y1="130" x2="485" y2="70" stroke="#2d2925" stroke-width="16" stroke-linecap="round"/><line x1="250" y1="285" x2="205" y2="390" stroke="#2d2925" stroke-width="14" /><line x1="365" y1="285" x2="425" y2="390" stroke="#2d2925" stroke-width="14" /><circle cx="205" cy="395" r="30" fill="#2d2925" /><circle cx="425" cy="395" r="30" fill="#2d2925" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">BABY</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Baby Stroller 1702</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1705-D8D272</text>
+</svg>

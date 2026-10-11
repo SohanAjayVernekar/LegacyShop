@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Luxury Gift Hamper 1723">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(98,35%,91%)"/><stop offset="1" stop-color="hsl(145,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(98,42%,58%)"/><stop offset="1" stop-color="hsl(145,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(248,42%,72%)"/><stop offset="1" stop-color="hsl(98,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(248,42%,72%)"/><stop offset="1" stop-color="hsl(145,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(248,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="361" cy="96" r="30" fill="rgba(255,255,255,.18)" /><circle cx="518" cy="217" r="41" fill="rgba(255,246,225,.22)" /><circle cx="61" cy="157" r="35" fill="rgba(70,50,38,.07)" /><circle cx="384" cy="348" r="23" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 353 410 440 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(9 12) rotate(-6 320 245) scale(1.045)">
+<path d="M160 190h320l-45 195H205z" fill="url(#obj)"/><path d="M220 195c10-125 190-125 200 0" fill="none" stroke="#2d2925" stroke-width="20"/><circle cx="250" cy="210" r="35" fill="hsl(248,42%,72%)" /><circle cx="320" cy="190" r="42" fill="hsl(98,42%,58%)" /><circle cx="390" cy="215" r="32" fill="#fffaf4" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">GIFTS</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Luxury Gift Hamper 1723</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1726-A67230</text>
+</svg>

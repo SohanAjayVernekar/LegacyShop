@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="27-inch Monitor 1545">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(266,35%,91%)"/><stop offset="1" stop-color="hsl(308,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(266,42%,58%)"/><stop offset="1" stop-color="hsl(308,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(108,42%,72%)"/><stop offset="1" stop-color="hsl(266,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(108,42%,72%)"/><stop offset="1" stop-color="hsl(308,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(108,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="385" cy="103" r="25" fill="rgba(255,255,255,.18)" /><circle cx="406" cy="172" r="10" fill="rgba(255,246,225,.22)" /><circle cx="368" cy="339" r="34" fill="rgba(70,50,38,.07)" /><circle cx="188" cy="262" r="18" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 379 410 446 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(14 -12) rotate(7 320 245) scale(0.970)">
+<rect x="115" y="65" width="410" height="255" rx="24" fill="#2d2925" /><rect x="135" y="85" width="370" height="215" rx="14" fill="url(#screen)" /><rect x="300" y="320" width="40" height="72" rx="10" fill="#8b8178" /><rect x="225" y="382" width="190" height="18" rx="9" fill="#8b8178" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">COMPUTERS &amp; ACCESSORIES</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">27-inch Monitor 1545</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1548-82C52A</text>
+</svg>

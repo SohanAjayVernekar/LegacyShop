@@ -1,0 +1,59 @@
+/*
+ LegacyShop Moving 3D compatibility fix
+
+ generated-product-assets.css contains:
+ .generated-product-host > *:not(.generated-product-image){display:none!important}
+
+ The moving 3D script wraps the image inside .ls-moving3d-stage.
+ That made the stage a direct child and the old rule hid the whole 3D visual.
+
+ These overrides intentionally load last.
+*/
+
+.generated-product-host.ls-moving3d > .ls-moving3d-stage{
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    visibility:visible!important;
+    opacity:1!important;
+}
+
+.generated-product-host.ls-moving3d .ls-moving3d-plane{
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    visibility:visible!important;
+    opacity:1!important;
+}
+
+.generated-product-host.ls-moving3d .generated-product-image{
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    visibility:visible!important;
+    opacity:1!important;
+}
+
+/* Keep the moving 3D elements visible even with older theme overrides. */
+.generated-product-host.ls-moving3d > .ls-moving3d-stage,
+.generated-product-host.ls-moving3d .ls-moving3d-edge,
+.generated-product-host.ls-moving3d .ls-moving3d-glint{
+    pointer-events:none;
+}
+
+/* Product cards should clip the animated visual cleanly inside the rounded art area. */
+.product-card .product-art.generated-product-host.ls-moving3d{
+    overflow:hidden!important;
+}
+
+/* Detail view can show a little more depth without spilling over the whole page. */
+.detail-art.generated-product-host.ls-moving3d{
+    overflow:hidden!important;
+}

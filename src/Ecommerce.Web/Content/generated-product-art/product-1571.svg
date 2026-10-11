@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Microwave Oven 1568">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(345,35%,91%)"/><stop offset="1" stop-color="hsl(46,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(345,42%,58%)"/><stop offset="1" stop-color="hsl(46,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(164,42%,72%)"/><stop offset="1" stop-color="hsl(345,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(164,42%,72%)"/><stop offset="1" stop-color="hsl(46,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(164,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="79" cy="340" r="19" fill="rgba(255,255,255,.18)" /><circle cx="155" cy="281" r="28" fill="rgba(255,246,225,.22)" /><circle cx="160" cy="69" r="18" fill="rgba(70,50,38,.07)" /><circle cx="446" cy="208" r="22" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 364 410 453 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(-10 0) rotate(-1 320 245) scale(1.014)">
+<rect x="115" y="120" width="410" height="245" rx="28" fill="#2d2925" /><rect x="145" y="150" width="260" height="185" rx="18" fill="#25282a" /><rect x="425" y="150" width="70" height="185" rx="18" fill="#4e4741" /><circle cx="460" cy="195" r="18" fill="hsl(345,42%,58%)" /><circle cx="460" cy="245" r="18" fill="hsl(164,42%,72%)" />
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">APPLIANCES</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Microwave Oven 1568</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1571-607B4D</text>
+</svg>

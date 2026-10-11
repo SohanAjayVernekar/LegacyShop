@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Leather Sneakers 1385">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(240,35%,91%)"/><stop offset="1" stop-color="hsl(301,30%,76%)"/></linearGradient>
+  <linearGradient id="obj" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(240,42%,58%)"/><stop offset="1" stop-color="hsl(301,38%,38%)"/></linearGradient>
+  <linearGradient id="obj2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(84,42%,72%)"/><stop offset="1" stop-color="hsl(240,42%,58%)"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(84,42%,72%)"/><stop offset="1" stop-color="hsl(301,38%,38%)"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="hsl(84,42%,72%)" stop-opacity=".82"/></linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#35271e" flood-opacity=".22"/></filter>
+</defs>
+<rect width="640" height="520" rx="42" fill="url(#bg)"/>
+<circle cx="509" cy="309" r="33" fill="rgba(255,255,255,.18)" /><circle cx="434" cy="228" r="30" fill="rgba(255,246,225,.22)" /><circle cx="574" cy="102" r="33" fill="rgba(70,50,38,.07)" /><circle cx="268" cy="167" r="13" fill="rgba(255,255,255,.18)" />
+<path d="M0 430 C160 385 410 451 640 382 V520 H0Z" fill="rgba(255,255,255,.16)"/>
+<g filter="url(#shadow)" transform="translate(18 -5) rotate(-2 320 245) scale(0.959)">
+<path d="M135 290c65-35 105-110 170-155 50-34 95 40 140 83 35 33 70 42 105 50l-20 75H155z" fill="url(#obj)"/><line x1="150" y1="345" x2="525" y2="345" stroke="#f2ebe4" stroke-width="28" stroke-linecap="round"/>
+</g>
+<g>
+  <rect x="28" y="422" width="505" height="72" rx="22" fill="rgba(255,253,249,.84)"/>
+  <text x="48" y="448" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#806b5d" letter-spacing="1">SHOES</text>
+  <text x="48" y="478" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#332c27">Leather Sneakers 1385</text>
+</g>
+<g transform="translate(555 28)">
+  <circle cx="28" cy="28" r="28" fill="rgba(255,253,249,.7)"/>
+  <text x="28" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#7a5c49">&#10022;</text>
+</g>
+<text x="604" y="493" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="800" fill="rgba(62,48,39,.55)">LS-1388-279A13</text>
+</svg>
